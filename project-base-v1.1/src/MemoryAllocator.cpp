@@ -11,15 +11,21 @@ void MemoryAllocator::init() {
     head->prev = nullptr;
 }
 
-void *MemoryAllocator::mem_alloc(size_t s) {
-    if (s <= 0) return 0;
-    size_t size=s;
+void* MemoryAllocator::mem_alloc(size_t s) {
+    if (s <= 0) return nullptr;
 
-    Block* blk=head; //pronadji prvi slobodan blok dovoljne velicine
+    size_t size = s;
+    Block* blk = head;
 
-    if (blk == nullptr) return nullptr;// ako nema dovoljno velikog bloka, vrati nullptr ??
+    while (blk != nullptr) {
+        if (blk->free && blk->size >= size + sizeof(Block)) {
+            break;
+        }
+        blk = blk->next;
+    }
 
-    if (blk->size > size + sizeof(Block)) { //ako moze da stane super
+    if (blk == nullptr) return nullptr; // nema dovoljno velikog bloka
+    if (blk->size > size + sizeof(Block)) {
         Block* newBlock = (Block*)((char*)blk + sizeof(Block) + size);
         newBlock->size = blk->size - size - sizeof(Block);
         newBlock->free = true;
@@ -33,32 +39,43 @@ void *MemoryAllocator::mem_alloc(size_t s) {
         blk->next = newBlock;
         blk->size = size;
     }
+
     blk->free = false;
-    return (void*)((char*)blk + sizeof(Block)); // korisni deo bloka
+    return (void*)((char*)blk + sizeof(Block));
 }
+
 
 int MemoryAllocator::mem_free(void* addr) {
-    if(addr==nullptr || addr > HEAP_END_ADDR || addr<HEAP_START_ADDR) return -1; //adresa nula
-    Block* trenutni = (Block*)((char*)addr - sizeof(Block)); // da dobijem blok iz adrese??
+    if (addr == nullptr || addr > HEAP_END_ADDR || addr < HEAP_START_ADDR) return -1;
 
-    if (trenutni->free) return -2; // vec slobodno
-    trenutni->free=true;
-    if (!trenutni->next && trenutni->next->free) {
+    Block* trenutni = (Block*)((char*)addr - sizeof(Block)); // predji na blok
+
+    if (trenutni->free) return -2; //slobodan
+
+    trenutni->free = true;
+
+    if (trenutni->next != nullptr && trenutni->next->free) {// spoji sa sl blokom ako je slobodan
         merge(trenutni, trenutni->next);
     }
-    if (!trenutni->prev && trenutni->prev->free)
-        merge(trenutni, trenutni->prev);
 
-    trenutni = nullptr;
+    if (trenutni->prev != nullptr && trenutni->prev->free) { // sa prethodnim  ako je slobodan
+        merge(trenutni->prev, trenutni);
+    }
+
     return 0;
 }
+
 
 
 void MemoryAllocator::merge(Block *prvi,Block *drugi) {
     if (prvi == nullptr || drugi == nullptr) {
         return;
     }
-
+    prvi->size += drugi->size;
+    prvi->next = drugi->next;
+    if (prvi->next != nullptr) {
+        prvi->next->prev = prvi;
+    }
 
 }
 
