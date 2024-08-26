@@ -20,7 +20,7 @@ void *MemoryAllocator::mem_alloc(size_t s) {
     Block *blk = head;
 
     while (blk != nullptr) {
-        if (blk->free && blk->size >= size + sizeof(Block)) {
+        if (blk->free && blk->size >= size) {
             break;
         }
         blk = blk->next;
