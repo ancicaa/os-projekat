@@ -10,7 +10,6 @@ struct Block{
     struct Block* prev;
     uint32 size;
     bool free;
-
 };
 
 class MemoryAllocator{
@@ -23,6 +22,7 @@ public:
     static void* mem_alloc(size_t size);
     static int mem_free(void* addr);
     static void merge(struct Block* prvi, struct Block* drugi);
+    static void print();
     //struct Block *head=nullptr;
 };
 
