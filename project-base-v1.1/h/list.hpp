@@ -95,7 +95,7 @@ class List{
         }
 
         bool isEmpty() const {
-            return head == nullptr;
+            return head == nullptr or tail == nullptr;
         }
 
 };

@@ -60,3 +60,11 @@ void putc (char c) {
     syscall(PUTC, c);
 }
 
+
+int sem_timedwait(sem_t, time_t) {
+    return 0;
+}
+
+int time_sleep(time_t) {
+    return 0;
+}

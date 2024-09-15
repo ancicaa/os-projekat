@@ -5,6 +5,7 @@
 #include "../h/syscall_c.hpp"
 #include "../h/TCB.hpp"
 #include "../h/_sem.hpp"
+#include "../test/printing.hpp"
 
 enum scause {
     SYSCALL_U = 8,
@@ -25,59 +26,60 @@ void Riscv::obradaprekida(uint64 code, uint64 arg1, uint64 arg2, uint64 arg3, ui
         switch (code) {
             case MEM_ALLOC:
                 MemoryAllocator::mem_alloc(arg1);
-            break;
+                break;
             case MEM_FREE:
                 MemoryAllocator::mem_free((void *) arg1);
-            break;
+                break;
             case GETC:
                 __getc();
-            break;
+                break;
             case PUTC:
                 __putc(arg1);
-            break;
+                break;
             case THREAD_CREATE:
-                TCB::createThread((thread_t*) arg1, (TCB::Body) arg2, (void *) arg3,(void *) arg4);
-            break;
+                TCB::createThread((thread_t *) arg1, (TCB::Body) arg2, (void *) arg3, (void *) arg4);
+                break;
             case THREAD_EXIT:
                 TCB::thread_exit();
-            break;
+                break;
             case THREAD_DISPATCH:
                 TCB::dispatch();
-            break;
+                break;
             case SEM_OPEN:
-                _sem::sem_open((sem_t*) arg1, arg2);
-            break;
+                _sem::sem_open((sem_t *) arg1, (long) arg2);
+                break;
             case SEM_CLOSE:
                 _sem::sem_close((sem_t) arg1);
-            break;
+                break;
             case SEM_WAIT:
                 _sem::sem_wait((sem_t) arg1);
-            break;
+                break;
             case SEM_SIGNAL:
                 _sem::sem_signal((sem_t) arg1);
-            break;
+                break;
             case SEM_TRYWAIT:
                 _sem::sem_trywait((sem_t) arg1);
-            break;
+                break;
         }
-
         w_sstatus(sstatus);
         w_sepc(sepc + 4);
     } else if (scause == TIMER) {
         mc_sip(SIP_SSIE);
-
     } else if (scause == CONSOLE) {
         console_handler();
     } else if (scause == ILLEGAL_INSTRTUCION) {
-      //??
+        printString("ILLEGAL INSTRUCTION");
+        while (true);
     } else if (scause == ILLEGAL_READ_ADDRESS) {
-      //??
+        printString("ILLEGAL READ ADDRESS");
+        while (true);
     } else if (scause == ILLEGAL_WRITE_ADDRESS) {
-      //??
-    };
+        printString("ILLEGAL WRITE ADDRESS");
+        while (true);
+    }
 }
 
-void Riscv::popSppSpie() { //--------------help???
+void Riscv::popSppSpie() {
     Riscv::mc_sstatus(Riscv::SSTATUS_SPP);
     __asm__ volatile("csrw sepc, ra");
     __asm__ volatile("sret");
