@@ -8,6 +8,9 @@ class Riscv{
     static void obradaprekida(uint64 code, uint64 arg1, uint64 arg2, uint64 arg3, uint64 arg4);
 public:
 
+  static void pushRegisters();
+  static void popRegisters();
+
     // pop sstatus.spp and sstatus.spie bits (has to be a non inline function)
     static void popSppSpie();
 
