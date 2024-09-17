@@ -75,7 +75,7 @@ void TCB::thread_wrapper() {
 }
 
 int TCB::join() {
-    if (this->isFinished()) return -1;
+    if (this->isFinished() or this == running) return -1;
     sem_wait(this->joiner);
     return 0;
 }

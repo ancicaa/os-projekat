@@ -29,17 +29,13 @@ private:
 int main() {
     MemoryAllocator::init();
     Riscv::w_stvec((uint64) rutina);// upis adrese prekidne rutinina
+
     thread_t main_handle;
-    setMaxThreads(2);
     thread_create(&main_handle, nullptr, nullptr);
-//    thread_t um_handle;
-//    thread_create(&um_handle, reinterpret_cast<void (*)(void *)>(userMain), nullptr);
-//    thread_join(um_handle);
-    Thread* thr[50];
-    for (int i = 0; i < 50; i++) {
-        thr[i] = new Thread1('A' + i);
-    }
-    for (auto t: thr) t->start();
-    thread_waitall();
+
+    thread_t um_handle;
+    thread_create(&um_handle, reinterpret_cast<void (*)(void *)>(userMain), nullptr);
+    thread_join(um_handle);
+
     return 0;
 }
