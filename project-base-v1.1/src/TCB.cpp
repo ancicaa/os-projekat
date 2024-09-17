@@ -4,8 +4,11 @@
 #include "../h/riscv.hpp"
 #include "../h/scheduler.hpp"
 #include "../test/printing.hpp"
+#include "../h/_sem.hpp"
 
 TCB *TCB::running = nullptr;
+long TCB::max_threads = 0x7FFFFFFF;
+_sem* TCB::max_sem = nullptr;
 
 void TCB::yield() {
     Riscv::pushRegisters();
@@ -23,7 +26,8 @@ void TCB::dispatch() { //promena konteksta, trenutnu zavrsenu zameni nekom drugo
 }
 
 
-TCB::TCB(Body body, void *arg, void *stack_space) : body(body), arg(arg), finished(false), blocked(false) {// da li moze drugacije
+TCB::TCB(Body body, void *arg, void *stack_space) : body(body), arg(arg), finished(false),
+                                                    blocked(false) {// da li moze drugacije
     if (stack_space) {
         stack = static_cast<uint64 *>(stack_space);
     } else {
@@ -32,9 +36,12 @@ TCB::TCB(Body body, void *arg, void *stack_space) : body(body), arg(arg), finish
     }
     if (body) {
         Scheduler::put(this);
+        running->children.addLast(this);
     } else {
         TCB::running = this;
+        _sem::sem_open(&max_sem, max_threads);
     }
+    sem_open(&this->joiner, 0);
     context.ra = (uint64) &thread_wrapper;
     context.sp = (uint64) ((char *) stack + DEFAULT_STACK_SIZE - 1);
 }
@@ -54,12 +61,31 @@ int TCB::thread_exit() { // da li treba jos nesto
     }
     running->setFinished(true);
     MemoryAllocator::mem_free(running->stack);
+    _sem::sem_close(running->joiner);
+    _sem::sem_signal(max_sem);
     TCB::dispatch();
     return 0;
 }
 
 void TCB::thread_wrapper() {
     Riscv::popSppSpie();
+    sem_wait(max_sem);
     running->body(running->arg);
     ::thread_exit();
+}
+
+int TCB::join() {
+    if (this->isFinished()) return -1;
+    sem_wait(this->joiner);
+    return 0;
+}
+
+void TCB::waitForAll() {
+    for (auto curr = running->children.head; curr; curr = curr->next) {
+        thread_join(curr->data);
+    }
+}
+
+void TCB::setMaxThread(int number) {
+    max_threads = number;
 }

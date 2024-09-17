@@ -13,6 +13,9 @@ enum code {
     THREAD_CREATE = 0x11,
     THREAD_EXIT = 0x12,
     THREAD_DISPATCH = 0x13,
+    THREAD_JOIN = 0x14,
+    THREAD_WAITALL = 0x15,
+    THREAD_MAX = 0x16,
     SEM_OPEN = 0x21,
     SEM_CLOSE = 0x22,
     SEM_WAIT = 0x23,
@@ -35,6 +38,12 @@ int thread_create(thread_t *handle, void(*start_routine)(void *), void *arg);
 int thread_exit();
 
 void thread_dispatch();
+
+int thread_join(thread_t);
+
+void thread_waitall();
+
+void setMaxThreads(int number);
 
 //semafori
 class _sem;

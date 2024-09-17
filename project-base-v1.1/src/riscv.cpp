@@ -45,6 +45,15 @@ void Riscv::obradaprekida(uint64 code, uint64 arg1, uint64 arg2, uint64 arg3, ui
             case THREAD_DISPATCH:
                 TCB::dispatch();
                 break;
+            case THREAD_JOIN:
+                ((thread_t) arg1)->join();
+                break;
+            case THREAD_WAITALL:
+                TCB::waitForAll();
+                break;
+            case THREAD_MAX:
+                TCB::setMaxThread(arg1);
+                break;
             case SEM_OPEN:
                 _sem::sem_open((sem_t *) arg1, (long) arg2);
                 break;
