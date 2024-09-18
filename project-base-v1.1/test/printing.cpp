@@ -11,6 +11,7 @@ uint64 lockPrint = 0;
 
 void printString(char const *string)
 {
+    if (string == nullptr) return;
     LOCK();
     while (*string != '\0')
     {

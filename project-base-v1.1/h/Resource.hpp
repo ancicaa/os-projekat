@@ -27,9 +27,8 @@ public:
     void give_back(int n) {
         mutex.wait();
         res += n;
-        if (threads > 0)
-            for (int i = 0; i < threads; i++)
-                waiter.signal();
+        for (int i = 0; i < threads; i++)
+            waiter.signal();
         threads = 0;
         mutex.signal();
     }

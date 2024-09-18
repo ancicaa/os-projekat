@@ -8,7 +8,7 @@
 
 TCB *TCB::running = nullptr;
 long TCB::max_threads = 0x7FFFFFFF;
-_sem* TCB::max_sem = nullptr;
+_sem *TCB::max_sem = nullptr;
 
 void TCB::yield() {
     Riscv::pushRegisters();
@@ -41,6 +41,9 @@ TCB::TCB(Body body, void *arg, void *stack_space) : body(body), arg(arg), finish
         TCB::running = this;
         _sem::sem_open(&max_sem, max_threads);
     }
+    this->message_box = nullptr;
+    _sem::sem_open(&this->box_empty, 1);
+    _sem::sem_open(&this->box_full, 0);
     sem_open(&this->joiner, 0);
     context.ra = (uint64) &thread_wrapper;
     context.sp = (uint64) ((char *) stack + DEFAULT_STACK_SIZE - 1);
@@ -88,4 +91,16 @@ void TCB::waitForAll() {
 
 void TCB::setMaxThread(int number) {
     max_threads = number;
+}
+
+void TCB::send(TCB *id, const char *msg) {
+    _sem::sem_wait(id->box_empty);
+    id->message_box = msg;
+    _sem::sem_signal(id->box_full);
+}
+
+const char *TCB::receive() {
+    _sem::sem_wait(running->box_full);
+    _sem::sem_signal(running->box_empty);
+    return running->message_box;
 }

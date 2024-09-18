@@ -11,31 +11,16 @@ extern "C" void rutina();
 
 extern void userMain();
 
-class Thread1 : public Thread {
-public:
-    Thread1(char letter) : Thread() {
-        this->letter = letter;
-    }
-    void run() override {
-        for(int i = 0; i < 1000; i++) {
-            putc(letter);
-            thread_dispatch();
-        }
-    }
-private:
-    char letter;
-};
-
 int main() {
     MemoryAllocator::init();
     Riscv::w_stvec((uint64) rutina);// upis adrese prekidne rutinina
 
+    setMaxThreads(10);
     thread_t main_handle;
     thread_create(&main_handle, nullptr, nullptr);
 
     thread_t um_handle;
     thread_create(&um_handle, reinterpret_cast<void (*)(void *)>(userMain), nullptr);
     thread_join(um_handle);
-
     return 0;
 }

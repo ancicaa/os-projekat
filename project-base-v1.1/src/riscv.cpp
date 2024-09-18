@@ -18,17 +18,19 @@ enum scause {
 };
 
 void Riscv::obradaprekida(uint64 code, uint64 arg1, uint64 arg2, uint64 arg3, uint64 arg4) {
-    uint64 scause = r_scause();
-    uint64 sepc = r_sepc(); //cita pc
-    uint64 sstatus = r_sstatus();//cita status registar
+    uint64 volatile scause = r_scause();
+    uint64 volatile sepc = r_sepc(); //cita pc
+    uint64 volatile sstatus = r_sstatus();//cita status registar
 
     if (scause == SYSCALL_S or scause == SYSCALL_U) {
         switch (code) {
             case MEM_ALLOC:
-                MemoryAllocator::mem_alloc(arg1);
+                __mem_alloc(MEM_BLOCK_SIZE*arg1);
+                //MemoryAllocator::mem_alloc(arg1);
                 break;
             case MEM_FREE:
-                MemoryAllocator::mem_free((void *) arg1);
+                __mem_free((void*)arg1);
+                //MemoryAllocator::mem_free((void *) arg1);
                 break;
             case GETC:
                 __getc();
@@ -68,6 +70,12 @@ void Riscv::obradaprekida(uint64 code, uint64 arg1, uint64 arg2, uint64 arg3, ui
                 break;
             case SEM_TRYWAIT:
                 _sem::sem_trywait((sem_t) arg1);
+                break;
+            case SEND:
+                TCB::send((thread_t) arg1, (const char *) arg2);
+                break;
+            case RECEIVE:
+                TCB::receive();
                 break;
         }
         w_sstatus(sstatus);

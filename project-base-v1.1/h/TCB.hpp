@@ -11,6 +11,7 @@
 #include "../lib/mem.h"
 #include "syscall_c.hpp"
 #include "../h/list.hpp"
+#include "syscall_cpp.hpp"
 
 class TCB {
 public:
@@ -50,11 +51,19 @@ public:
 
     static void setMaxThread(int number);
 
+    static void send(TCB *id, const char *msg);
+
+    static const char *receive();
+
+    _sem *box_full;
+    _sem *box_empty;
+
 private:
     struct Context {
         uint64 ra;
         uint64 sp;
     };
+    friend class _sem;
 
     Body body;
     void *arg;
@@ -72,6 +81,13 @@ private:
     static long max_threads;
     static _sem* max_sem;
 
+    const char *message_box;
+
+    //A -> B
+    //ako B ima vec poruku, A se blokira
+
+    //B cita poruku koju je dobila
+    //ako nema poruke, B se blokira
 public:
     static void contextSwitch(Context *oldContext, Context *newContext);
 

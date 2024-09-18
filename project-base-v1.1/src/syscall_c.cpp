@@ -1,6 +1,6 @@
 #include "../h/syscall_c.hpp"
 #include "../h/riscv.hpp"
-
+#include "../h/TCB.hpp"
 
 uint64 syscall(uint64 code, uint64 arg = 0, uint64 arg2 = 0, uint64 arg3 = 0, uint64 arg4 = 0) {
     __asm__ volatile ("ecall");
@@ -45,6 +45,15 @@ void setMaxThreads(int number) {
 
 void thread_waitall() {
     syscall(THREAD_WAITALL);
+}
+
+void send(thread_t id, const char *msg) {
+    //id->box_empty->wait();
+    syscall(SEND, (uint64) id, (uint64) msg);
+}
+
+const char *receive() {
+    return (const char *) syscall(RECEIVE);
 }
 
 //-------------------------semafori

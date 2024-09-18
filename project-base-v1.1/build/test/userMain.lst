@@ -1,4 +1,4 @@
-GAS LISTING /tmp/cc4UOzhB.s 			page 1
+GAS LISTING /tmp/ccLo4Roh.s 			page 1
 
 
    1              		.file	"userMain.cpp"
@@ -6,81 +6,12 @@ GAS LISTING /tmp/cc4UOzhB.s 			page 1
    3              		.option norelax
    4              		.text
    5              	.Ltext0:
-   6              		.section	.rodata.str1.8,"aMS",@progbits,1
-   7              		.align	3
-   8              	.LC0:
-   9 0000 556E6573 		.string	"Unesite broj testa? [1-7]\n"
-   9      69746520 
-   9      62726F6A 
-   9      20746573 
-   9      74613F20 
-  10 001b 00000000 		.align	3
-  10      00
-  11              	.LC1:
-  12 0020 4E696A65 		.string	"Nije navedeno da je zadatak 4 implementiran\n"
-  12      206E6176 
-  12      6564656E 
-  12      6F206461 
-  12      206A6520 
-  13 004d 000000   		.align	3
-  14              	.LC2:
-  15 0050 54455354 		.string	"TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n"
-  15      20312028 
-  15      7A616461 
-  15      74616B20 
-  15      322C206E 
-  16 008d 000000   		.align	3
-  17              	.LC3:
-  18 0090 54455354 		.string	"TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n"
-  18      20322028 
-  18      7A616461 
-  18      74616B20 
-  18      322E2C20 
-  19              		.align	3
-  20              	.LC4:
-  21 00d0 54455354 		.string	"TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena konteksta)\n"
-  21      20332028 
-  21      7A616461 
-  21      74616B20 
-  21      332E2C20 
-  22              		.align	3
-  23              	.LC5:
-  24 0120 54455354 		.string	"TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena konteksta)\n"
-  24      20342028 
-  24      7A616461 
-  24      74616B20 
-  24      332E2C20 
-  25 0172 00000000 		.align	3
-  25      0000
-  26              	.LC6:
-  27 0178 54657374 		.string	"Test se nije uspesno zavrsio\n"
-  27      20736520 
-  27      6E696A65 
-  27      20757370 
-  27      65736E6F 
-GAS LISTING /tmp/cc4UOzhB.s 			page 2
-
-
-  28 0196 0000     		.align	3
-  29              	.LC7:
-  30 0198 54455354 		.string	"TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnickom rezimu)\n"
-  30      20372028 
-  30      7A616461 
-  30      74616B20 
-  30      322E2C20 
-  31 01ef 00       		.align	3
-  32              	.LC8:
-  33 01f0 4E697374 		.string	"Niste uneli odgovarajuci broj za test\n"
-  33      6520756E 
-  33      656C6920 
-  33      6F64676F 
-  33      76617261 
-  34              		.text
-  35              		.align	2
-  36              		.globl	_Z8userMainv
-  38              	_Z8userMainv:
-  39              	.LFB0:
-  40              		.file 1 "test/userMain.cpp"
+   6              		.section	.text._ZN7Thread13runEv,"axG",@progbits,_ZN7Thread13runEv,comdat
+   7              		.align	2
+   8              		.weak	_ZN7Thread13runEv
+  10              	_ZN7Thread13runEv:
+  11              	.LFB4:
+  12              		.file 1 "test/userMain.cpp"
    1:test/userMain.cpp **** #include "printing.hpp"
    2:test/userMain.cpp **** 
    3:test/userMain.cpp **** #define LEVEL_1_IMPLEMENTED 0
@@ -112,519 +43,1788 @@ GAS LISTING /tmp/cc4UOzhB.s 			page 1
   29:test/userMain.cpp **** #include "System_Mode_test.hpp"
   30:test/userMain.cpp **** 
   31:test/userMain.cpp **** #endif
-  32:test/userMain.cpp **** 
-  33:test/userMain.cpp **** void userMain() {
-  41              		.loc 1 33 17
-  42              		.cfi_startproc
-  43 0000 130101FE 		addi	sp,sp,-32
-  44              		.cfi_def_cfa_offset 32
-GAS LISTING /tmp/cc4UOzhB.s 			page 3
+  32:test/userMain.cpp **** #include "../h/syscall_cpp.hpp"
+  33:test/userMain.cpp **** 
+  34:test/userMain.cpp **** class Thread1 : public Thread {
+  35:test/userMain.cpp **** public:
+  36:test/userMain.cpp ****     Thread1(char letter) : Thread() {
+  37:test/userMain.cpp ****         this->letter = letter;
+  38:test/userMain.cpp ****     }
+  39:test/userMain.cpp ****     void run() override {
+  13              		.loc 1 39 10
+  14              		.cfi_startproc
+  15              	.LVL0:
+  16 0000 130101FE 		addi	sp,sp,-32
+  17              		.cfi_def_cfa_offset 32
+  18 0004 233C1100 		sd	ra,24(sp)
+  19 0008 23388100 		sd	s0,16(sp)
+GAS LISTING /tmp/ccLo4Roh.s 			page 2
 
 
-  45 0004 233C1100 		sd	ra,24(sp)
-  46 0008 23388100 		sd	s0,16(sp)
-  47 000c 23349100 		sd	s1,8(sp)
-  48 0010 23302101 		sd	s2,0(sp)
-  49              		.cfi_offset 1, -8
-  50              		.cfi_offset 8, -16
-  51              		.cfi_offset 9, -24
-  52              		.cfi_offset 18, -32
-  53 0014 13040102 		addi	s0,sp,32
-  54              		.cfi_def_cfa 8, 0
-  34:test/userMain.cpp ****     printString("Unesite broj testa? [1-7]\n");
-  55              		.loc 1 34 5
-  56              		.loc 1 34 16 is_stmt 0
-  57 0018 17050000 		lla	a0,.LC0
-  57      13050500 
-  58 0020 97000000 		call	_Z11printStringPKc@plt
-  58      E7800000 
-  59              	.LVL0:
-  35:test/userMain.cpp ****     int test = getc() - '0';
-  60              		.loc 1 35 5 is_stmt 1
-  61              		.loc 1 35 20 is_stmt 0
-  62 0028 97000000 		call	_Z4getcv@plt
-  62      E7800000 
-  63              	.LVL1:
-  64 0030 13090500 		mv	s2,a0
-  65              		.loc 1 35 25
-  66 0034 9B0405FD 		addiw	s1,a0,-48
-  67              	.LVL2:
-  36:test/userMain.cpp ****     getc(); // Enter posle broja
-  68              		.loc 1 36 5 is_stmt 1
-  69              		.loc 1 36 9 is_stmt 0
-  70 0038 97000000 		call	_Z4getcv@plt
-  70      E7800000 
-  71              	.LVL3:
-  37:test/userMain.cpp **** 
-  38:test/userMain.cpp ****     if ((test >= 1 && test <= 2) || test == 7) {
-  72              		.loc 1 38 5 is_stmt 1
-  39:test/userMain.cpp ****         if (LEVEL_2_IMPLEMENTED == 0) {
-  40:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 2 implementiran\n");
-  41:test/userMain.cpp ****             return;
-  42:test/userMain.cpp ****         }
-  43:test/userMain.cpp ****     }
-  44:test/userMain.cpp **** 
-  45:test/userMain.cpp ****     if (test >= 3 && test <= 4) {
-  73              		.loc 1 45 5
-  46:test/userMain.cpp ****         if (LEVEL_3_IMPLEMENTED == 0) {
-  47:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 3 implementiran\n");
-  48:test/userMain.cpp ****             return;
-  49:test/userMain.cpp ****         }
-  50:test/userMain.cpp ****     }
-  51:test/userMain.cpp **** 
-  52:test/userMain.cpp ****     if (test >= 5 && test <= 6) {
-  74              		.loc 1 52 5
-  75              		.loc 1 52 19 is_stmt 0
-  76 0040 1B09B9FC 		addiw	s2,s2,-53
-  77              		.loc 1 52 5
-  78 0044 93071000 		li	a5,1
-GAS LISTING /tmp/cc4UOzhB.s 			page 4
+  20 000c 23349100 		sd	s1,8(sp)
+  21 0010 23302101 		sd	s2,0(sp)
+  22              		.cfi_offset 1, -8
+  23              		.cfi_offset 8, -16
+  24              		.cfi_offset 9, -24
+  25              		.cfi_offset 18, -32
+  26 0014 13040102 		addi	s0,sp,32
+  27              		.cfi_def_cfa 8, 0
+  28 0018 13090500 		mv	s2,a0
+  40:test/userMain.cpp ****         for(int i = 0; i < 1000; i++) {
+  29              		.loc 1 40 9
+  30              	.LVL1:
+  31              	.LBB10:
+  32              		.loc 1 40 17 is_stmt 0
+  33 001c 93040000 		li	s1,0
+  34              	.LVL2:
+  35              	.L3:
+  36              		.loc 1 40 26 is_stmt 1 discriminator 3
+  37 0020 9307703E 		li	a5,999
+  38 0024 63C09702 		bgt	s1,a5,.L1
+  41:test/userMain.cpp ****             putc(letter);
+  39              		.loc 1 41 13 discriminator 2
+  40              		.loc 1 41 17 is_stmt 0 discriminator 2
+  41 0028 03450902 		lbu	a0,32(s2)
+  42 002c 97000000 		call	_Z4putcc@plt
+  42      E7800000 
+  43              	.LVL3:
+  42:test/userMain.cpp ****             thread_dispatch();
+  44              		.loc 1 42 13 is_stmt 1 discriminator 2
+  45              		.loc 1 42 28 is_stmt 0 discriminator 2
+  46 0034 97000000 		call	_Z15thread_dispatchv@plt
+  46      E7800000 
+  47              	.LVL4:
+  40:test/userMain.cpp ****         for(int i = 0; i < 1000; i++) {
+  48              		.loc 1 40 9 is_stmt 1 discriminator 2
+  49 003c 9B841400 		addiw	s1,s1,1
+  50              	.LVL5:
+  51 0040 6FF01FFE 		j	.L3
+  52              	.LVL6:
+  53              	.L1:
+  54              	.LBE10:
+  43:test/userMain.cpp ****         }
+  44:test/userMain.cpp ****     }
+  55              		.loc 1 44 5 is_stmt 0
+  56 0044 83308101 		ld	ra,24(sp)
+  57              		.cfi_restore 1
+  58 0048 03340101 		ld	s0,16(sp)
+  59              		.cfi_restore 8
+  60              		.cfi_def_cfa 2, 32
+  61 004c 83348100 		ld	s1,8(sp)
+  62              		.cfi_restore 9
+  63              	.LVL7:
+  64 0050 03390100 		ld	s2,0(sp)
+  65              		.cfi_restore 18
+  66              	.LVL8:
+  67 0054 13010102 		addi	sp,sp,32
+  68              		.cfi_def_cfa_offset 0
+GAS LISTING /tmp/ccLo4Roh.s 			page 3
 
 
-  79 0048 63F42703 		bleu	s2,a5,.L12
-  53:test/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
-  54:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 4 implementiran\n");
-  55:test/userMain.cpp ****             return;
-  56:test/userMain.cpp ****         }
-  57:test/userMain.cpp ****     }
-  58:test/userMain.cpp **** 
-  59:test/userMain.cpp ****     switch (test) {
-  80              		.loc 1 59 5 is_stmt 1
-  81 004c 93077000 		li	a5,7
-  82 0050 63E2970E 		bgtu	s1,a5,.L4
-  83 0054 93942400 		slli	s1,s1,2
-  84 0058 17070000 		lla	a4,.L6
-  84      13070700 
-  85 0060 B384E400 		add	s1,s1,a4
-  86 0064 83A70400 		lw	a5,0(s1)
-  87 0068 B387E700 		add	a5,a5,a4
-  88 006c 67800700 		jr	a5
-  89              		.section	.rodata
-  90              		.align	2
-  91              		.align	2
-  92              	.L6:
-  93 0000 00000000 		.word	.L4-.L6
-  94 0004 00000000 		.word	.L10-.L6
-  95 0008 00000000 		.word	.L9-.L6
-  96 000c 00000000 		.word	.L8-.L6
-  97 0010 00000000 		.word	.L7-.L6
-  98 0014 00000000 		.word	.L1-.L6
-  99 0018 00000000 		.word	.L1-.L6
- 100 001c 00000000 		.word	.L5-.L6
- 101              		.text
- 102              	.L12:
-  53:test/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
- 103              		.loc 1 53 9
-  54:test/userMain.cpp ****             return;
- 104              		.loc 1 54 13
-  54:test/userMain.cpp ****             return;
- 105              		.loc 1 54 24 is_stmt 0
- 106 0070 17050000 		lla	a0,.LC1
- 106      13050500 
- 107 0078 97000000 		call	_Z11printStringPKc@plt
- 107      E7800000 
- 108              	.LVL4:
-  55:test/userMain.cpp ****         }
- 109              		.loc 1 55 13 is_stmt 1
- 110              	.L1:
-  60:test/userMain.cpp ****         case 1:
-  61:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
-  62:test/userMain.cpp ****             Threads_C_API_test();
-  63:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
-  64:test/userMain.cpp **** #endif
-  65:test/userMain.cpp ****             break;
-  66:test/userMain.cpp ****         case 2:
-  67:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
-  68:test/userMain.cpp ****             Threads_CPP_API_test();
-  69:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
-  70:test/userMain.cpp **** #endif
-GAS LISTING /tmp/cc4UOzhB.s 			page 5
+  69 0058 67800000 		jr	ra
+  70              		.cfi_endproc
+  71              	.LFE4:
+  73              		.section	.text._ZN7Thread1D2Ev,"axG",@progbits,_ZN7Thread1D5Ev,comdat
+  74              		.align	2
+  75              		.weak	_ZN7Thread1D2Ev
+  77              	_ZN7Thread1D2Ev:
+  78              	.LFB12:
+  34:test/userMain.cpp **** public:
+  79              		.loc 1 34 7 is_stmt 1
+  80              		.cfi_startproc
+  81              	.LVL9:
+  82 0000 130101FF 		addi	sp,sp,-16
+  83              		.cfi_def_cfa_offset 16
+  84 0004 23341100 		sd	ra,8(sp)
+  85 0008 23308100 		sd	s0,0(sp)
+  86              		.cfi_offset 1, -8
+  87              		.cfi_offset 8, -16
+  88 000c 13040101 		addi	s0,sp,16
+  89              		.cfi_def_cfa 8, 0
+  90              	.LBB11:
+  34:test/userMain.cpp **** public:
+  91              		.loc 1 34 7 is_stmt 0
+  92 0010 97070000 		lla	a5,_ZTV7Thread1+16
+  92      93870700 
+  93 0018 2330F500 		sd	a5,0(a0)
+  94 001c 97000000 		call	_ZN6ThreadD2Ev@plt
+  94      E7800000 
+  95              	.LVL10:
+  96              	.LBE11:
+  97 0024 83308100 		ld	ra,8(sp)
+  98              		.cfi_restore 1
+  99 0028 03340100 		ld	s0,0(sp)
+ 100              		.cfi_restore 8
+ 101              		.cfi_def_cfa 2, 16
+ 102 002c 13010101 		addi	sp,sp,16
+ 103              		.cfi_def_cfa_offset 0
+ 104 0030 67800000 		jr	ra
+ 105              		.cfi_endproc
+ 106              	.LFE12:
+ 108              		.weak	_ZN7Thread1D1Ev
+ 109              		.set	_ZN7Thread1D1Ev,_ZN7Thread1D2Ev
+ 110              		.section	.text._ZN7Thread1D0Ev,"axG",@progbits,_ZN7Thread1D5Ev,comdat
+ 111              		.align	2
+ 112              		.weak	_ZN7Thread1D0Ev
+ 114              	_ZN7Thread1D0Ev:
+ 115              	.LFB14:
+  34:test/userMain.cpp **** public:
+ 116              		.loc 1 34 7 is_stmt 1
+ 117              		.cfi_startproc
+ 118              	.LVL11:
+ 119 0000 130101FE 		addi	sp,sp,-32
+ 120              		.cfi_def_cfa_offset 32
+ 121 0004 233C1100 		sd	ra,24(sp)
+ 122 0008 23388100 		sd	s0,16(sp)
+ 123 000c 23349100 		sd	s1,8(sp)
+ 124              		.cfi_offset 1, -8
+GAS LISTING /tmp/ccLo4Roh.s 			page 4
 
 
-  71:test/userMain.cpp ****             break;
-  72:test/userMain.cpp ****         case 3:
-  73:test/userMain.cpp **** #if LEVEL_3_IMPLEMENTED == 1
-  74:test/userMain.cpp ****             producerConsumer_C_API();
-  75:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
-  76:test/userMain.cpp **** #endif
-  77:test/userMain.cpp ****             break;
-  78:test/userMain.cpp ****         case 4:
-  79:test/userMain.cpp **** #if LEVEL_3_IMPLEMENTED == 1
-  80:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
-  81:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
-  82:test/userMain.cpp **** #endif
-  83:test/userMain.cpp ****             break;
-  84:test/userMain.cpp ****         case 5:
-  85:test/userMain.cpp **** #if LEVEL_4_IMPLEMENTED == 1
-  86:test/userMain.cpp ****             testSleeping();
-  87:test/userMain.cpp ****             printString("TEST 5 (zadatak 4., thread_sleep test C API)\n");
-  88:test/userMain.cpp **** #endif
-  89:test/userMain.cpp ****             break;
-  90:test/userMain.cpp ****         case 6:
-  91:test/userMain.cpp **** #if LEVEL_4_IMPLEMENTED == 1
-  92:test/userMain.cpp ****             testConsumerProducer();
-  93:test/userMain.cpp ****             printString("TEST 6 (zadatak 4. CPP API i asinhrona promena konteksta)\n");
-  94:test/userMain.cpp **** #endif
-  95:test/userMain.cpp ****             break;
-  96:test/userMain.cpp ****         case 7:
-  97:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
-  98:test/userMain.cpp ****             System_Mode_test();
-  99:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
- 100:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
- 101:test/userMain.cpp **** #endif
- 102:test/userMain.cpp ****             break;
- 103:test/userMain.cpp ****         default:
- 104:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
- 105:test/userMain.cpp ****     }
- 106:test/userMain.cpp **** }...
- 111              		.loc 1 106 1 is_stmt 0
- 112 0080 83308101 		ld	ra,24(sp)
- 113              		.cfi_remember_state
- 114              		.cfi_restore 1
- 115 0084 03340101 		ld	s0,16(sp)
- 116              		.cfi_restore 8
- 117              		.cfi_def_cfa 2, 32
- 118 0088 83348100 		ld	s1,8(sp)
- 119              		.cfi_restore 9
- 120 008c 03390100 		ld	s2,0(sp)
- 121              		.cfi_restore 18
- 122 0090 13010102 		addi	sp,sp,32
- 123              		.cfi_def_cfa_offset 0
- 124 0094 67800000 		jr	ra
- 125              	.L10:
- 126              		.cfi_restore_state
-  60:test/userMain.cpp ****         case 1:
- 127              		.loc 1 60 9 is_stmt 1
-  62:test/userMain.cpp ****             Threads_C_API_test();
- 128              		.loc 1 62 13
-  62:test/userMain.cpp ****             Threads_C_API_test();
-GAS LISTING /tmp/cc4UOzhB.s 			page 6
+ 125              		.cfi_offset 8, -16
+ 126              		.cfi_offset 9, -24
+ 127 0010 13040102 		addi	s0,sp,32
+ 128              		.cfi_def_cfa 8, 0
+ 129 0014 93040500 		mv	s1,a0
+ 130              	.LVL12:
+ 131              	.LBB12:
+ 132              	.LBB13:
+  34:test/userMain.cpp **** public:
+ 133              		.loc 1 34 7 is_stmt 0
+ 134 0018 97070000 		lla	a5,_ZTV7Thread1+16
+ 134      93870700 
+ 135 0020 2330F500 		sd	a5,0(a0)
+ 136 0024 97000000 		call	_ZN6ThreadD2Ev@plt
+ 136      E7800000 
+ 137              	.LVL13:
+ 138              	.LBE13:
+ 139              	.LBE12:
+ 140 002c 13850400 		mv	a0,s1
+ 141 0030 97000000 		call	_ZdlPv@plt
+ 141      E7800000 
+ 142              	.LVL14:
+ 143 0038 83308101 		ld	ra,24(sp)
+ 144              		.cfi_restore 1
+ 145 003c 03340101 		ld	s0,16(sp)
+ 146              		.cfi_restore 8
+ 147              		.cfi_def_cfa 2, 32
+ 148 0040 83348100 		ld	s1,8(sp)
+ 149              		.cfi_restore 9
+ 150              	.LVL15:
+ 151 0044 13010102 		addi	sp,sp,32
+ 152              		.cfi_def_cfa_offset 0
+ 153 0048 67800000 		jr	ra
+ 154              		.cfi_endproc
+ 155              	.LFE14:
+ 157              		.section	.rodata.str1.8,"aMS",@progbits,1
+ 158              		.align	3
+ 159              	.LC0:
+ 160 0000 4E697420 		.string	"Nit A -> Nit B\n"
+ 160      41202D3E 
+ 160      204E6974 
+ 160      20420A00 
+ 161              		.align	3
+ 162              	.LC1:
+ 163 0010 4E697420 		.string	"Nit A -> Nit C\n"
+ 163      41202D3E 
+ 163      204E6974 
+ 163      20430A00 
+ 164              		.text
+ 165              		.align	2
+ 166              		.globl	_Z5testAPv
+ 168              	_Z5testAPv:
+ 169              	.LFB6:
+  45:test/userMain.cpp **** private:
+  46:test/userMain.cpp ****     char letter;
+  47:test/userMain.cpp **** };
+  48:test/userMain.cpp **** 
+GAS LISTING /tmp/ccLo4Roh.s 			page 5
 
 
- 129              		.loc 1 62 31 is_stmt 0
- 130 0098 97000000 		call	_Z18Threads_C_API_testv@plt
- 130      E7800000 
- 131              	.LVL5:
-  63:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
- 132              		.loc 1 63 13 is_stmt 1
-  63:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
- 133              		.loc 1 63 24 is_stmt 0
- 134 00a0 17050000 		lla	a0,.LC2
- 134      13050500 
- 135 00a8 97000000 		call	_Z11printStringPKc@plt
- 135      E7800000 
- 136              	.LVL6:
-  65:test/userMain.cpp ****             break;
- 137              		.loc 1 65 13 is_stmt 1
- 138 00b0 6FF01FFD 		j	.L1
- 139              	.L9:
-  66:test/userMain.cpp ****         case 2:
- 140              		.loc 1 66 9
-  68:test/userMain.cpp ****             Threads_CPP_API_test();
- 141              		.loc 1 68 13
-  68:test/userMain.cpp ****             Threads_CPP_API_test();
- 142              		.loc 1 68 33 is_stmt 0
- 143 00b4 97000000 		call	_Z20Threads_CPP_API_testv@plt
- 143      E7800000 
- 144              	.LVL7:
-  69:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
- 145              		.loc 1 69 13 is_stmt 1
-  69:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
- 146              		.loc 1 69 24 is_stmt 0
- 147 00bc 17050000 		lla	a0,.LC3
- 147      13050500 
- 148 00c4 97000000 		call	_Z11printStringPKc@plt
- 148      E7800000 
- 149              	.LVL8:
-  71:test/userMain.cpp ****             break;
- 150              		.loc 1 71 13 is_stmt 1
- 151 00cc 6FF05FFB 		j	.L1
- 152              	.L8:
-  72:test/userMain.cpp ****         case 3:
- 153              		.loc 1 72 9
-  74:test/userMain.cpp ****             producerConsumer_C_API();
- 154              		.loc 1 74 13
-  74:test/userMain.cpp ****             producerConsumer_C_API();
- 155              		.loc 1 74 35 is_stmt 0
- 156 00d0 97000000 		call	_Z22producerConsumer_C_APIv@plt
- 156      E7800000 
- 157              	.LVL9:
-  75:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
- 158              		.loc 1 75 13 is_stmt 1
-  75:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
- 159              		.loc 1 75 24 is_stmt 0
- 160 00d8 17050000 		lla	a0,.LC4
- 160      13050500 
- 161 00e0 97000000 		call	_Z11printStringPKc@plt
- 161      E7800000 
- 162              	.LVL10:
-GAS LISTING /tmp/cc4UOzhB.s 			page 7
-
-
-  77:test/userMain.cpp ****             break;
- 163              		.loc 1 77 13 is_stmt 1
- 164 00e8 6FF09FF9 		j	.L1
- 165              	.L7:
-  78:test/userMain.cpp ****         case 4:
- 166              		.loc 1 78 9
-  80:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
- 167              		.loc 1 80 13
-  80:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
- 168              		.loc 1 80 42 is_stmt 0
- 169 00ec 97000000 		call	_Z29producerConsumer_CPP_Sync_APIv@plt
- 169      E7800000 
- 170              	.LVL11:
-  81:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
- 171              		.loc 1 81 13 is_stmt 1
-  81:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
- 172              		.loc 1 81 24 is_stmt 0
- 173 00f4 17050000 		lla	a0,.LC5
- 173      13050500 
- 174 00fc 97000000 		call	_Z11printStringPKc@plt
- 174      E7800000 
- 175              	.LVL12:
-  83:test/userMain.cpp ****             break;
- 176              		.loc 1 83 13 is_stmt 1
- 177 0104 6FF0DFF7 		j	.L1
- 178              	.L5:
-  96:test/userMain.cpp ****         case 7:
- 179              		.loc 1 96 9
-  98:test/userMain.cpp ****             System_Mode_test();
- 180              		.loc 1 98 13
-  98:test/userMain.cpp ****             System_Mode_test();
- 181              		.loc 1 98 29 is_stmt 0
- 182 0108 97000000 		call	_Z16System_Mode_testv@plt
- 182      E7800000 
- 183              	.LVL13:
-  99:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
- 184              		.loc 1 99 13 is_stmt 1
-  99:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
- 185              		.loc 1 99 24 is_stmt 0
- 186 0110 17050000 		lla	a0,.LC6
- 186      13050500 
- 187 0118 97000000 		call	_Z11printStringPKc@plt
+  49:test/userMain.cpp **** void myTest() {
+  50:test/userMain.cpp ****     Thread* threads[50];
+  51:test/userMain.cpp ****     for (int i = 0; i < 50; i++){
+  52:test/userMain.cpp ****         threads[i] = new Thread1(i + 'A');
+  53:test/userMain.cpp ****     }
+  54:test/userMain.cpp ****     for (auto & thread : threads){
+  55:test/userMain.cpp ****         thread->start();
+  56:test/userMain.cpp ****     }
+  57:test/userMain.cpp ****     thread_waitall();
+  58:test/userMain.cpp **** }
+  59:test/userMain.cpp **** 
+  60:test/userMain.cpp **** thread_t A, B, C;
+  61:test/userMain.cpp **** 
+  62:test/userMain.cpp **** void testA(void*) {
+ 170              		.loc 1 62 19 is_stmt 1
+ 171              		.cfi_startproc
+ 172 0000 130101FE 		addi	sp,sp,-32
+ 173              		.cfi_def_cfa_offset 32
+ 174 0004 233C1100 		sd	ra,24(sp)
+ 175 0008 23388100 		sd	s0,16(sp)
+ 176 000c 23349100 		sd	s1,8(sp)
+ 177              		.cfi_offset 1, -8
+ 178              		.cfi_offset 8, -16
+ 179              		.cfi_offset 9, -24
+ 180 0010 13040102 		addi	s0,sp,32
+ 181              		.cfi_def_cfa 8, 0
+  63:test/userMain.cpp ****     send(B, "Nit A -> Nit B\n");
+ 182              		.loc 1 63 5
+ 183              		.loc 1 63 9 is_stmt 0
+ 184 0014 97040000 		lla	s1,.LANCHOR0
+ 184      93840400 
+ 185 001c 97050000 		lla	a1,.LC0
+ 185      93850500 
+ 186 0024 03B50400 		ld	a0,0(s1)
+ 187 0028 97000000 		call	_Z4sendP3TCBPKc@plt
  187      E7800000 
- 188              	.LVL14:
- 100:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
- 189              		.loc 1 100 13 is_stmt 1
- 100:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
- 190              		.loc 1 100 24 is_stmt 0
- 191 0120 17050000 		lla	a0,.LC7
- 191      13050500 
- 192 0128 97000000 		call	_Z11printStringPKc@plt
- 192      E7800000 
- 193              	.LVL15:
- 102:test/userMain.cpp ****             break;
- 194              		.loc 1 102 13 is_stmt 1
- 195 0130 6FF01FF5 		j	.L1
- 196              	.L4:
-GAS LISTING /tmp/cc4UOzhB.s 			page 8
+ 188              	.LVL16:
+  64:test/userMain.cpp ****     send(C, "Nit A -> Nit C\n");
+ 189              		.loc 1 64 5 is_stmt 1
+ 190              		.loc 1 64 9 is_stmt 0
+ 191 0030 97050000 		lla	a1,.LC1
+ 191      93850500 
+ 192 0038 03B58400 		ld	a0,8(s1)
+ 193 003c 97000000 		call	_Z4sendP3TCBPKc@plt
+ 193      E7800000 
+ 194              	.LVL17:
+  65:test/userMain.cpp ****     printString(receive());
+ 195              		.loc 1 65 5 is_stmt 1
+ 196              		.loc 1 65 16 is_stmt 0
+ 197 0044 97000000 		call	_Z7receivev@plt
+ 197      E7800000 
+ 198              	.LVL18:
+ 199 004c 97000000 		call	_Z11printStringPKc@plt
+ 199      E7800000 
+ 200              	.LVL19:
+  66:test/userMain.cpp **** }
+ 201              		.loc 1 66 1
+GAS LISTING /tmp/ccLo4Roh.s 			page 6
 
 
- 103:test/userMain.cpp ****         default:
- 197              		.loc 1 103 9
- 104:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
- 198              		.loc 1 104 13
- 104:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
- 199              		.loc 1 104 24 is_stmt 0
- 200 0134 17050000 		lla	a0,.LC8
- 200      13050500 
- 201 013c 97000000 		call	_Z11printStringPKc@plt
- 201      E7800000 
- 202              	.LVL16:
- 203 0144 6FF0DFF3 		j	.L1
- 204              		.cfi_endproc
- 205              	.LFE0:
- 207              	.Letext0:
- 208              		.file 2 "test/../h/../lib/hw.h"
- 209              		.file 3 "test/printing.hpp"
- 210              		.file 4 "test/../h/syscall_c.hpp"
- 211              		.file 5 "test/../test/Threads_C_API_test.hpp"
- 212              		.file 6 "test/../test/Threads_CPP_API_test.hpp"
- 213              		.file 7 "test/../test/ConsumerProducer_C_API_test.hpp"
- 214              		.file 8 "test/../test/ConsumerProducer_CPP_Sync_API_test.hpp"
- 215              		.file 9 "test/../test/System_Mode_test.hpp"
-GAS LISTING /tmp/cc4UOzhB.s 			page 9
+ 202 0054 83308101 		ld	ra,24(sp)
+ 203              		.cfi_restore 1
+ 204 0058 03340101 		ld	s0,16(sp)
+ 205              		.cfi_restore 8
+ 206              		.cfi_def_cfa 2, 32
+ 207 005c 83348100 		ld	s1,8(sp)
+ 208              		.cfi_restore 9
+ 209 0060 13010102 		addi	sp,sp,32
+ 210              		.cfi_def_cfa_offset 0
+ 211 0064 67800000 		jr	ra
+ 212              		.cfi_endproc
+ 213              	.LFE6:
+ 215              		.section	.rodata.str1.8
+ 216              		.align	3
+ 217              	.LC2:
+ 218 0020 4E697420 		.string	"Nit B -> Nit C 1\n"
+ 218      42202D3E 
+ 218      204E6974 
+ 218      20432031 
+ 218      0A00
+ 219 0032 00000000 		.align	3
+ 219      0000
+ 220              	.LC3:
+ 221 0038 4E697420 		.string	"Nit B -> Nit C 2\n"
+ 221      42202D3E 
+ 221      204E6974 
+ 221      20432032 
+ 221      0A00
+ 222              		.text
+ 223              		.align	2
+ 224              		.globl	_Z5testBPv
+ 226              	_Z5testBPv:
+ 227              	.LFB7:
+  67:test/userMain.cpp **** 
+  68:test/userMain.cpp **** void testB(void*) {
+ 228              		.loc 1 68 19 is_stmt 1
+ 229              		.cfi_startproc
+ 230 0068 130101FE 		addi	sp,sp,-32
+ 231              		.cfi_def_cfa_offset 32
+ 232 006c 233C1100 		sd	ra,24(sp)
+ 233 0070 23388100 		sd	s0,16(sp)
+ 234 0074 23349100 		sd	s1,8(sp)
+ 235              		.cfi_offset 1, -8
+ 236              		.cfi_offset 8, -16
+ 237              		.cfi_offset 9, -24
+ 238 0078 13040102 		addi	s0,sp,32
+ 239              		.cfi_def_cfa 8, 0
+  69:test/userMain.cpp ****     send(C, "Nit B -> Nit C 1\n");
+ 240              		.loc 1 69 5
+ 241              		.loc 1 69 9 is_stmt 0
+ 242 007c 97040000 		lla	s1,.LANCHOR0
+ 242      93840400 
+ 243 0084 97050000 		lla	a1,.LC2
+ 243      93850500 
+ 244 008c 03B58400 		ld	a0,8(s1)
+ 245 0090 97000000 		call	_Z4sendP3TCBPKc@plt
+ 245      E7800000 
+GAS LISTING /tmp/ccLo4Roh.s 			page 7
+
+
+ 246              	.LVL20:
+  70:test/userMain.cpp ****     send(C, "Nit B -> Nit C 2\n");
+ 247              		.loc 1 70 5 is_stmt 1
+ 248              		.loc 1 70 9 is_stmt 0
+ 249 0098 97050000 		lla	a1,.LC3
+ 249      93850500 
+ 250 00a0 03B58400 		ld	a0,8(s1)
+ 251 00a4 97000000 		call	_Z4sendP3TCBPKc@plt
+ 251      E7800000 
+ 252              	.LVL21:
+  71:test/userMain.cpp ****     printString(receive());
+ 253              		.loc 1 71 5 is_stmt 1
+ 254              		.loc 1 71 16 is_stmt 0
+ 255 00ac 97000000 		call	_Z7receivev@plt
+ 255      E7800000 
+ 256              	.LVL22:
+ 257 00b4 97000000 		call	_Z11printStringPKc@plt
+ 257      E7800000 
+ 258              	.LVL23:
+  72:test/userMain.cpp **** }
+ 259              		.loc 1 72 1
+ 260 00bc 83308101 		ld	ra,24(sp)
+ 261              		.cfi_restore 1
+ 262 00c0 03340101 		ld	s0,16(sp)
+ 263              		.cfi_restore 8
+ 264              		.cfi_def_cfa 2, 32
+ 265 00c4 83348100 		ld	s1,8(sp)
+ 266              		.cfi_restore 9
+ 267 00c8 13010102 		addi	sp,sp,32
+ 268              		.cfi_def_cfa_offset 0
+ 269 00cc 67800000 		jr	ra
+ 270              		.cfi_endproc
+ 271              	.LFE7:
+ 273              		.section	.rodata.str1.8
+ 274 004a 00000000 		.align	3
+ 274      0000
+ 275              	.LC4:
+ 276 0050 4E697420 		.string	"Nit C -> Nit B\n"
+ 276      43202D3E 
+ 276      204E6974 
+ 276      20420A00 
+ 277              		.align	3
+ 278              	.LC5:
+ 279 0060 4E697420 		.string	"Nit C -> Nit A\n"
+ 279      43202D3E 
+ 279      204E6974 
+ 279      20410A00 
+ 280              		.text
+ 281              		.align	2
+ 282              		.globl	_Z5testCPv
+ 284              	_Z5testCPv:
+ 285              	.LFB8:
+  73:test/userMain.cpp **** 
+  74:test/userMain.cpp **** void testC(void*) {
+ 286              		.loc 1 74 19 is_stmt 1
+ 287              		.cfi_startproc
+ 288 00d0 130101FE 		addi	sp,sp,-32
+GAS LISTING /tmp/ccLo4Roh.s 			page 8
+
+
+ 289              		.cfi_def_cfa_offset 32
+ 290 00d4 233C1100 		sd	ra,24(sp)
+ 291 00d8 23388100 		sd	s0,16(sp)
+ 292 00dc 23349100 		sd	s1,8(sp)
+ 293              		.cfi_offset 1, -8
+ 294              		.cfi_offset 8, -16
+ 295              		.cfi_offset 9, -24
+ 296 00e0 13040102 		addi	s0,sp,32
+ 297              		.cfi_def_cfa 8, 0
+  75:test/userMain.cpp ****     printString(receive());
+ 298              		.loc 1 75 5
+ 299              		.loc 1 75 16 is_stmt 0
+ 300 00e4 97000000 		call	_Z7receivev@plt
+ 300      E7800000 
+ 301              	.LVL24:
+ 302 00ec 97000000 		call	_Z11printStringPKc@plt
+ 302      E7800000 
+ 303              	.LVL25:
+  76:test/userMain.cpp ****     printString(receive());
+ 304              		.loc 1 76 5 is_stmt 1
+ 305              		.loc 1 76 16 is_stmt 0
+ 306 00f4 97000000 		call	_Z7receivev@plt
+ 306      E7800000 
+ 307              	.LVL26:
+ 308 00fc 97000000 		call	_Z11printStringPKc@plt
+ 308      E7800000 
+ 309              	.LVL27:
+  77:test/userMain.cpp ****     printString(receive());
+ 310              		.loc 1 77 5 is_stmt 1
+ 311              		.loc 1 77 16 is_stmt 0
+ 312 0104 97000000 		call	_Z7receivev@plt
+ 312      E7800000 
+ 313              	.LVL28:
+ 314 010c 97000000 		call	_Z11printStringPKc@plt
+ 314      E7800000 
+ 315              	.LVL29:
+  78:test/userMain.cpp ****     send(B, "Nit C -> Nit B\n");
+ 316              		.loc 1 78 5 is_stmt 1
+ 317              		.loc 1 78 9 is_stmt 0
+ 318 0114 97040000 		lla	s1,.LANCHOR0
+ 318      93840400 
+ 319 011c 97050000 		lla	a1,.LC4
+ 319      93850500 
+ 320 0124 03B50400 		ld	a0,0(s1)
+ 321 0128 97000000 		call	_Z4sendP3TCBPKc@plt
+ 321      E7800000 
+ 322              	.LVL30:
+  79:test/userMain.cpp ****     send(A, "Nit C -> Nit A\n");
+ 323              		.loc 1 79 5 is_stmt 1
+ 324              		.loc 1 79 9 is_stmt 0
+ 325 0130 97050000 		lla	a1,.LC5
+ 325      93850500 
+ 326 0138 03B50401 		ld	a0,16(s1)
+ 327 013c 97000000 		call	_Z4sendP3TCBPKc@plt
+ 327      E7800000 
+ 328              	.LVL31:
+  80:test/userMain.cpp **** }
+GAS LISTING /tmp/ccLo4Roh.s 			page 9
+
+
+ 329              		.loc 1 80 1
+ 330 0144 83308101 		ld	ra,24(sp)
+ 331              		.cfi_restore 1
+ 332 0148 03340101 		ld	s0,16(sp)
+ 333              		.cfi_restore 8
+ 334              		.cfi_def_cfa 2, 32
+ 335 014c 83348100 		ld	s1,8(sp)
+ 336              		.cfi_restore 9
+ 337 0150 13010102 		addi	sp,sp,32
+ 338              		.cfi_def_cfa_offset 0
+ 339 0154 67800000 		jr	ra
+ 340              		.cfi_endproc
+ 341              	.LFE8:
+ 343              		.align	2
+ 344              		.globl	_Z6myTestv
+ 346              	_Z6myTestv:
+ 347              	.LFB5:
+  49:test/userMain.cpp ****     Thread* threads[50];
+ 348              		.loc 1 49 15 is_stmt 1
+ 349              		.cfi_startproc
+ 350              		.cfi_personality 0x9b,DW.ref.__gxx_personality_v0
+ 351              		.cfi_lsda 0x1b,.LLSDA5
+ 352 0158 130101E4 		addi	sp,sp,-448
+ 353              		.cfi_def_cfa_offset 448
+ 354 015c 233C111A 		sd	ra,440(sp)
+ 355 0160 2338811A 		sd	s0,432(sp)
+ 356 0164 2334911A 		sd	s1,424(sp)
+ 357 0168 2330211B 		sd	s2,416(sp)
+ 358 016c 233C3119 		sd	s3,408(sp)
+ 359              		.cfi_offset 1, -8
+ 360              		.cfi_offset 8, -16
+ 361              		.cfi_offset 9, -24
+ 362              		.cfi_offset 18, -32
+ 363              		.cfi_offset 19, -40
+ 364 0170 1304011C 		addi	s0,sp,448
+ 365              		.cfi_def_cfa 8, 0
+  50:test/userMain.cpp ****     for (int i = 0; i < 50; i++){
+ 366              		.loc 1 50 5
+  51:test/userMain.cpp ****         threads[i] = new Thread1(i + 'A');
+ 367              		.loc 1 51 5
+ 368              	.LVL32:
+ 369              	.LBB14:
+  51:test/userMain.cpp ****         threads[i] = new Thread1(i + 'A');
+ 370              		.loc 1 51 14 is_stmt 0
+ 371 0174 13090000 		li	s2,0
+ 372 0178 6F008002 		j	.L17
+ 373              	.LVL33:
+ 374              	.L24:
+ 375              	.LBB15:
+ 376              	.LBB16:
+  36:test/userMain.cpp ****         this->letter = letter;
+ 377              		.loc 1 36 35
+ 378 017c 97070000 		lla	a5,_ZTV7Thread1+16
+ 378      93870700 
+ 379 0184 23B0F400 		sd	a5,0(s1)
+  37:test/userMain.cpp ****     }
+ 380              		.loc 1 37 9 is_stmt 1
+GAS LISTING /tmp/ccLo4Roh.s 			page 10
+
+
+  37:test/userMain.cpp ****     }
+ 381              		.loc 1 37 22 is_stmt 0
+ 382 0188 23803403 		sb	s3,32(s1)
+ 383              	.LVL34:
+ 384              	.LBE16:
+ 385              	.LBE15:
+  52:test/userMain.cpp ****     }
+ 386              		.loc 1 52 20
+ 387 018c 93173900 		slli	a5,s2,3
+ 388 0190 130704FD 		addi	a4,s0,-48
+ 389 0194 B307F700 		add	a5,a4,a5
+ 390 0198 23B897E6 		sd	s1,-400(a5)
+  51:test/userMain.cpp ****         threads[i] = new Thread1(i + 'A');
+ 391              		.loc 1 51 5 is_stmt 1
+ 392 019c 1B091900 		addiw	s2,s2,1
+ 393              	.LVL35:
+ 394              	.L17:
+  51:test/userMain.cpp ****         threads[i] = new Thread1(i + 'A');
+ 395              		.loc 1 51 23 discriminator 2
+ 396 01a0 93071003 		li	a5,49
+ 397 01a4 63C42703 		bgt	s2,a5,.L20
+  52:test/userMain.cpp ****     }
+ 398              		.loc 1 52 9
+  52:test/userMain.cpp ****     }
+ 399              		.loc 1 52 41 is_stmt 0
+ 400 01a8 13058002 		li	a0,40
+ 401              	.LEHB0:
+ 402 01ac 97000000 		call	_Znwm@plt
+ 402      E7800000 
+ 403              	.LVL36:
+ 404              	.LEHE0:
+ 405 01b4 93040500 		mv	s1,a0
+ 406 01b8 9B091904 		addiw	s3,s2,65
+ 407 01bc 93F9F90F 		andi	s3,s3,0xff
+ 408              	.LVL37:
+ 409              	.LEHB1:
+ 410              	.LBB18:
+ 411              	.LBB17:
+  36:test/userMain.cpp ****         this->letter = letter;
+ 412              		.loc 1 36 35
+ 413 01c0 97000000 		call	_ZN6ThreadC2Ev@plt
+ 413      E7800000 
+ 414              	.LVL38:
+ 415              	.LEHE1:
+ 416 01c8 6FF05FFB 		j	.L24
+ 417              	.LVL39:
+ 418              	.L20:
+ 419              	.LBE17:
+ 420              	.LBE18:
+ 421              	.LBE14:
+ 422              	.LBB19:
+  54:test/userMain.cpp ****         thread->start();
+ 423              		.loc 1 54 26
+ 424 01cc 930404E4 		addi	s1,s0,-448
+ 425              	.L16:
+ 426              	.LVL40:
+  54:test/userMain.cpp ****         thread->start();
+GAS LISTING /tmp/ccLo4Roh.s 			page 11
+
+
+ 427              		.loc 1 54 26 is_stmt 1 discriminator 1
+ 428 01d0 930704FD 		addi	a5,s0,-48
+ 429 01d4 638CF400 		beq	s1,a5,.L18
+ 430              	.LVL41:
+  55:test/userMain.cpp ****     }
+ 431              		.loc 1 55 9 discriminator 2
+  55:test/userMain.cpp ****     }
+ 432              		.loc 1 55 22 is_stmt 0 discriminator 2
+ 433 01d8 03B50400 		ld	a0,0(s1)
+ 434              	.LEHB2:
+ 435 01dc 97000000 		call	_ZN6Thread5startEv@plt
+ 435      E7800000 
+ 436              	.LVL42:
+  54:test/userMain.cpp ****         thread->start();
+ 437              		.loc 1 54 5 is_stmt 1 discriminator 2
+ 438 01e4 93848400 		addi	s1,s1,8
+ 439              	.LVL43:
+ 440 01e8 6FF09FFE 		j	.L16
+ 441              	.LVL44:
+ 442              	.L18:
+ 443              	.LBE19:
+  57:test/userMain.cpp **** }
+ 444              		.loc 1 57 5
+  57:test/userMain.cpp **** }
+ 445              		.loc 1 57 19 is_stmt 0
+ 446 01ec 97000000 		call	_Z14thread_waitallv@plt
+ 446      E7800000 
+ 447              	.LVL45:
+  58:test/userMain.cpp **** 
+ 448              		.loc 1 58 1
+ 449 01f4 8330811B 		ld	ra,440(sp)
+ 450              		.cfi_remember_state
+ 451              		.cfi_restore 1
+ 452 01f8 0334011B 		ld	s0,432(sp)
+ 453              		.cfi_restore 8
+ 454              		.cfi_def_cfa 2, 448
+ 455 01fc 8334811A 		ld	s1,424(sp)
+ 456              		.cfi_restore 9
+ 457              	.LVL46:
+ 458 0200 0339011A 		ld	s2,416(sp)
+ 459              		.cfi_restore 18
+ 460              	.LVL47:
+ 461 0204 83398119 		ld	s3,408(sp)
+ 462              		.cfi_restore 19
+ 463 0208 1301011C 		addi	sp,sp,448
+ 464              		.cfi_def_cfa_offset 0
+ 465 020c 67800000 		jr	ra
+ 466              	.LVL48:
+ 467              	.L21:
+ 468              		.cfi_restore_state
+ 469 0210 13090500 		mv	s2,a0
+ 470              	.LVL49:
+ 471              	.LBB20:
+  52:test/userMain.cpp ****     }
+ 472              		.loc 1 52 41
+ 473 0214 13850400 		mv	a0,s1
+ 474 0218 97000000 		call	_ZdlPv@plt
+GAS LISTING /tmp/ccLo4Roh.s 			page 12
+
+
+ 474      E7800000 
+ 475              	.LVL50:
+ 476 0220 13050900 		mv	a0,s2
+ 477 0224 97000000 		call	_Unwind_Resume@plt
+ 477      E7800000 
+ 478              	.LVL51:
+ 479              	.LEHE2:
+ 480              	.LBE20:
+ 481              		.cfi_endproc
+ 482              	.LFE5:
+ 483              		.globl	__gxx_personality_v0
+ 484              		.section	.gcc_except_table,"a",@progbits
+ 485              	.LLSDA5:
+ 486 0000 FF       		.byte	0xff
+ 487 0001 FF       		.byte	0xff
+ 488 0002 03       		.byte	0x3
+ 489 0003 27       		.byte	0x27
+ 490 0004 00000000 		.4byte	.LEHB0-.LFB5
+ 491 0008 00000000 		.4byte	.LEHE0-.LEHB0
+ 492 000c 00000000 		.4byte	0
+ 493 0010 00       		.byte	0
+ 494 0011 00000000 		.4byte	.LEHB1-.LFB5
+ 495 0015 00000000 		.4byte	.LEHE1-.LEHB1
+ 496 0019 00000000 		.4byte	.L21-.LFB5
+ 497 001d 00       		.byte	0
+ 498 001e 00000000 		.4byte	.LEHB2-.LFB5
+ 499 0022 00000000 		.4byte	.LEHE2-.LEHB2
+ 500 0026 00000000 		.4byte	0
+ 501 002a 00       		.byte	0
+ 502              		.text
+ 504              		.align	2
+ 505              		.globl	_Z7myTest1v
+ 507              	_Z7myTest1v:
+ 508              	.LFB9:
+  81:test/userMain.cpp **** 
+  82:test/userMain.cpp **** void myTest1() {
+ 509              		.loc 1 82 16 is_stmt 1
+ 510              		.cfi_startproc
+ 511 022c 130101FF 		addi	sp,sp,-16
+ 512              		.cfi_def_cfa_offset 16
+ 513 0230 23341100 		sd	ra,8(sp)
+ 514 0234 23308100 		sd	s0,0(sp)
+ 515              		.cfi_offset 1, -8
+ 516              		.cfi_offset 8, -16
+ 517 0238 13040101 		addi	s0,sp,16
+ 518              		.cfi_def_cfa 8, 0
+  83:test/userMain.cpp ****     thread_create(&A, testA, nullptr);
+ 519              		.loc 1 83 5
+ 520              		.loc 1 83 18 is_stmt 0
+ 521 023c 13060000 		li	a2,0
+ 522 0240 97050000 		lla	a1,_Z5testAPv
+ 522      93850500 
+ 523 0248 17050000 		lla	a0,.LANCHOR0+16
+ 523      13050500 
+ 524 0250 97000000 		call	_Z13thread_createPP3TCBPFvPvES2_@plt
+ 524      E7800000 
+ 525              	.LVL52:
+GAS LISTING /tmp/ccLo4Roh.s 			page 13
+
+
+  84:test/userMain.cpp ****     thread_create(&B, testB, nullptr);
+ 526              		.loc 1 84 5 is_stmt 1
+ 527              		.loc 1 84 18 is_stmt 0
+ 528 0258 13060000 		li	a2,0
+ 529 025c 97050000 		lla	a1,_Z5testBPv
+ 529      93850500 
+ 530 0264 17050000 		lla	a0,.LANCHOR0
+ 530      13050500 
+ 531 026c 97000000 		call	_Z13thread_createPP3TCBPFvPvES2_@plt
+ 531      E7800000 
+ 532              	.LVL53:
+  85:test/userMain.cpp ****     thread_create(&C, testC, nullptr);
+ 533              		.loc 1 85 5 is_stmt 1
+ 534              		.loc 1 85 18 is_stmt 0
+ 535 0274 13060000 		li	a2,0
+ 536 0278 97050000 		lla	a1,_Z5testCPv
+ 536      93850500 
+ 537 0280 17050000 		lla	a0,.LANCHOR0+8
+ 537      13050500 
+ 538 0288 97000000 		call	_Z13thread_createPP3TCBPFvPvES2_@plt
+ 538      E7800000 
+ 539              	.LVL54:
+  86:test/userMain.cpp ****     thread_waitall();
+ 540              		.loc 1 86 5 is_stmt 1
+ 541              		.loc 1 86 19 is_stmt 0
+ 542 0290 97000000 		call	_Z14thread_waitallv@plt
+ 542      E7800000 
+ 543              	.LVL55:
+  87:test/userMain.cpp **** }
+ 544              		.loc 1 87 1
+ 545 0298 83308100 		ld	ra,8(sp)
+ 546              		.cfi_restore 1
+ 547 029c 03340100 		ld	s0,0(sp)
+ 548              		.cfi_restore 8
+ 549              		.cfi_def_cfa 2, 16
+ 550 02a0 13010101 		addi	sp,sp,16
+ 551              		.cfi_def_cfa_offset 0
+ 552 02a4 67800000 		jr	ra
+ 553              		.cfi_endproc
+ 554              	.LFE9:
+ 556              		.section	.rodata.str1.8
+ 557              		.align	3
+ 558              	.LC6:
+ 559 0070 556E6573 		.string	"Unesite broj testa? [1-7]\n"
+ 559      69746520 
+ 559      62726F6A 
+ 559      20746573 
+ 559      74613F20 
+ 560 008b 00000000 		.align	3
+ 560      00
+ 561              	.LC7:
+ 562 0090 4E696A65 		.string	"Nije navedeno da je zadatak 4 implementiran\n"
+ 562      206E6176 
+ 562      6564656E 
+ 562      6F206461 
+ 562      206A6520 
+ 563 00bd 000000   		.align	3
+GAS LISTING /tmp/ccLo4Roh.s 			page 14
+
+
+ 564              	.LC8:
+ 565 00c0 54455354 		.string	"TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n"
+ 565      20312028 
+ 565      7A616461 
+ 565      74616B20 
+ 565      322C206E 
+ 566 00fd 000000   		.align	3
+ 567              	.LC9:
+ 568 0100 54455354 		.string	"TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n"
+ 568      20322028 
+ 568      7A616461 
+ 568      74616B20 
+ 568      322E2C20 
+ 569              		.align	3
+ 570              	.LC10:
+ 571 0140 54455354 		.string	"TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena konteksta)\n"
+ 571      20332028 
+ 571      7A616461 
+ 571      74616B20 
+ 571      332E2C20 
+ 572              		.align	3
+ 573              	.LC11:
+ 574 0190 54455354 		.string	"TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena konteksta)\n"
+ 574      20342028 
+ 574      7A616461 
+ 574      74616B20 
+ 574      332E2C20 
+ 575 01e2 00000000 		.align	3
+ 575      0000
+ 576              	.LC12:
+ 577 01e8 54657374 		.string	"Test se nije uspesno zavrsio\n"
+ 577      20736520 
+ 577      6E696A65 
+ 577      20757370 
+ 577      65736E6F 
+ 578 0206 0000     		.align	3
+ 579              	.LC13:
+ 580 0208 54455354 		.string	"TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnickom rezimu)\n"
+ 580      20372028 
+ 580      7A616461 
+ 580      74616B20 
+ 580      322E2C20 
+ 581 025f 00       		.align	3
+ 582              	.LC14:
+ 583 0260 4E697374 		.string	"Niste uneli odgovarajuci broj za test\n"
+ 583      6520756E 
+ 583      656C6920 
+ 583      6F64676F 
+ 583      76617261 
+ 584              		.text
+ 585              		.align	2
+ 586              		.globl	_Z8userMainv
+ 588              	_Z8userMainv:
+ 589              	.LFB10:
+  88:test/userMain.cpp **** 
+  89:test/userMain.cpp **** void userMain() {
+ 590              		.loc 1 89 17 is_stmt 1
+GAS LISTING /tmp/ccLo4Roh.s 			page 15
+
+
+ 591              		.cfi_startproc
+ 592 02a8 130101FE 		addi	sp,sp,-32
+ 593              		.cfi_def_cfa_offset 32
+ 594 02ac 233C1100 		sd	ra,24(sp)
+ 595 02b0 23388100 		sd	s0,16(sp)
+ 596 02b4 23349100 		sd	s1,8(sp)
+ 597 02b8 23302101 		sd	s2,0(sp)
+ 598              		.cfi_offset 1, -8
+ 599              		.cfi_offset 8, -16
+ 600              		.cfi_offset 9, -24
+ 601              		.cfi_offset 18, -32
+ 602 02bc 13040102 		addi	s0,sp,32
+ 603              		.cfi_def_cfa 8, 0
+  90:test/userMain.cpp ****     printString("Unesite broj testa? [1-7]\n");
+ 604              		.loc 1 90 5
+ 605              		.loc 1 90 16 is_stmt 0
+ 606 02c0 17050000 		lla	a0,.LC6
+ 606      13050500 
+ 607 02c8 97000000 		call	_Z11printStringPKc@plt
+ 607      E7800000 
+ 608              	.LVL56:
+  91:test/userMain.cpp ****     int test = getc() - '0';
+ 609              		.loc 1 91 5 is_stmt 1
+ 610              		.loc 1 91 20 is_stmt 0
+ 611 02d0 97000000 		call	_Z4getcv@plt
+ 611      E7800000 
+ 612              	.LVL57:
+ 613 02d8 13090500 		mv	s2,a0
+ 614              		.loc 1 91 25
+ 615 02dc 9B0405FD 		addiw	s1,a0,-48
+ 616              	.LVL58:
+  92:test/userMain.cpp ****     getc(); // Enter posle broja
+ 617              		.loc 1 92 5 is_stmt 1
+ 618              		.loc 1 92 9 is_stmt 0
+ 619 02e0 97000000 		call	_Z4getcv@plt
+ 619      E7800000 
+ 620              	.LVL59:
+  93:test/userMain.cpp **** 
+  94:test/userMain.cpp ****     if ((test >= 1 && test <= 2) || test == 7) {
+ 621              		.loc 1 94 5 is_stmt 1
+  95:test/userMain.cpp ****         if (LEVEL_2_IMPLEMENTED == 0) {
+  96:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 2 implementiran\n");
+  97:test/userMain.cpp ****             return;
+  98:test/userMain.cpp ****         }
+  99:test/userMain.cpp ****     }
+ 100:test/userMain.cpp **** 
+ 101:test/userMain.cpp ****     if (test >= 3 && test <= 4) {
+ 622              		.loc 1 101 5
+ 102:test/userMain.cpp ****         if (LEVEL_3_IMPLEMENTED == 0) {
+ 103:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 3 implementiran\n");
+ 104:test/userMain.cpp ****             return;
+ 105:test/userMain.cpp ****         }
+ 106:test/userMain.cpp ****     }
+ 107:test/userMain.cpp **** 
+ 108:test/userMain.cpp ****     if (test >= 5 && test <= 6) {
+ 623              		.loc 1 108 5
+ 624              		.loc 1 108 19 is_stmt 0
+GAS LISTING /tmp/ccLo4Roh.s 			page 16
+
+
+ 625 02e8 1B09B9FC 		addiw	s2,s2,-53
+ 626              		.loc 1 108 5
+ 627 02ec 93071000 		li	a5,1
+ 628 02f0 63F42703 		bleu	s2,a5,.L39
+ 109:test/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
+ 110:test/userMain.cpp ****             printString("Nije navedeno da je zadatak 4 implementiran\n");
+ 111:test/userMain.cpp ****             return;
+ 112:test/userMain.cpp ****         }
+ 113:test/userMain.cpp ****     }
+ 114:test/userMain.cpp **** 
+ 115:test/userMain.cpp ****     switch (test) {
+ 629              		.loc 1 115 5 is_stmt 1
+ 630 02f4 93078000 		li	a5,8
+ 631 02f8 63E8970E 		bgtu	s1,a5,.L30
+ 632 02fc 93942400 		slli	s1,s1,2
+ 633 0300 17070000 		lla	a4,.L32
+ 633      13070700 
+ 634 0308 B384E400 		add	s1,s1,a4
+ 635 030c 83A70400 		lw	a5,0(s1)
+ 636 0310 B387E700 		add	a5,a5,a4
+ 637 0314 67800700 		jr	a5
+ 638              		.section	.rodata
+ 639              		.align	2
+ 640              		.align	2
+ 641              	.L32:
+ 642 0000 00000000 		.word	.L30-.L32
+ 643 0004 00000000 		.word	.L37-.L32
+ 644 0008 00000000 		.word	.L36-.L32
+ 645 000c 00000000 		.word	.L35-.L32
+ 646 0010 00000000 		.word	.L34-.L32
+ 647 0014 00000000 		.word	.L27-.L32
+ 648 0018 00000000 		.word	.L27-.L32
+ 649 001c 00000000 		.word	.L33-.L32
+ 650 0020 00000000 		.word	.L31-.L32
+ 651              		.text
+ 652              	.L39:
+ 109:test/userMain.cpp ****         if (LEVEL_4_IMPLEMENTED == 0) {
+ 653              		.loc 1 109 9
+ 110:test/userMain.cpp ****             return;
+ 654              		.loc 1 110 13
+ 110:test/userMain.cpp ****             return;
+ 655              		.loc 1 110 24 is_stmt 0
+ 656 0318 17050000 		lla	a0,.LC7
+ 656      13050500 
+ 657 0320 97000000 		call	_Z11printStringPKc@plt
+ 657      E7800000 
+ 658              	.LVL60:
+ 111:test/userMain.cpp ****         }
+ 659              		.loc 1 111 13 is_stmt 1
+ 660              	.L27:
+ 116:test/userMain.cpp ****         case 1:
+ 117:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
+ 118:test/userMain.cpp ****             Threads_C_API_test();
+ 119:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
+ 120:test/userMain.cpp **** #endif
+ 121:test/userMain.cpp ****             break;
+ 122:test/userMain.cpp ****         case 2:
+GAS LISTING /tmp/ccLo4Roh.s 			page 17
+
+
+ 123:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
+ 124:test/userMain.cpp ****             Threads_CPP_API_test();
+ 125:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
+ 126:test/userMain.cpp **** #endif
+ 127:test/userMain.cpp ****             break;
+ 128:test/userMain.cpp ****         case 3:
+ 129:test/userMain.cpp **** #if LEVEL_3_IMPLEMENTED == 1
+ 130:test/userMain.cpp ****             producerConsumer_C_API();
+ 131:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
+ 132:test/userMain.cpp **** #endif
+ 133:test/userMain.cpp ****             break;
+ 134:test/userMain.cpp ****         case 4:
+ 135:test/userMain.cpp **** #if LEVEL_3_IMPLEMENTED == 1
+ 136:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
+ 137:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
+ 138:test/userMain.cpp **** #endif
+ 139:test/userMain.cpp ****             break;
+ 140:test/userMain.cpp ****         case 5:
+ 141:test/userMain.cpp **** #if LEVEL_4_IMPLEMENTED == 1
+ 142:test/userMain.cpp ****             testSleeping();
+ 143:test/userMain.cpp ****             printString("TEST 5 (zadatak 4., thread_sleep test C API)\n");
+ 144:test/userMain.cpp **** #endif
+ 145:test/userMain.cpp ****             break;
+ 146:test/userMain.cpp ****         case 6:
+ 147:test/userMain.cpp **** #if LEVEL_4_IMPLEMENTED == 1
+ 148:test/userMain.cpp ****             testConsumerProducer();
+ 149:test/userMain.cpp ****             printString("TEST 6 (zadatak 4. CPP API i asinhrona promena konteksta)\n");
+ 150:test/userMain.cpp **** #endif
+ 151:test/userMain.cpp ****             break;
+ 152:test/userMain.cpp ****         case 7:
+ 153:test/userMain.cpp **** #if LEVEL_2_IMPLEMENTED == 1
+ 154:test/userMain.cpp ****             System_Mode_test();
+ 155:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
+ 156:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
+ 157:test/userMain.cpp **** #endif
+ 158:test/userMain.cpp ****             break;
+ 159:test/userMain.cpp ****         case 8:
+ 160:test/userMain.cpp ****             myTest1();
+ 161:test/userMain.cpp ****             break;
+ 162:test/userMain.cpp ****         default:
+ 163:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
+ 164:test/userMain.cpp ****     }
+ 165:test/userMain.cpp **** }...
+ 661              		.loc 1 165 1 is_stmt 0
+ 662 0328 83308101 		ld	ra,24(sp)
+ 663              		.cfi_remember_state
+ 664              		.cfi_restore 1
+ 665 032c 03340101 		ld	s0,16(sp)
+ 666              		.cfi_restore 8
+ 667              		.cfi_def_cfa 2, 32
+ 668 0330 83348100 		ld	s1,8(sp)
+ 669              		.cfi_restore 9
+ 670 0334 03390100 		ld	s2,0(sp)
+ 671              		.cfi_restore 18
+ 672 0338 13010102 		addi	sp,sp,32
+ 673              		.cfi_def_cfa_offset 0
+ 674 033c 67800000 		jr	ra
+GAS LISTING /tmp/ccLo4Roh.s 			page 18
+
+
+ 675              	.L37:
+ 676              		.cfi_restore_state
+ 116:test/userMain.cpp ****         case 1:
+ 677              		.loc 1 116 9 is_stmt 1
+ 118:test/userMain.cpp ****             Threads_C_API_test();
+ 678              		.loc 1 118 13
+ 118:test/userMain.cpp ****             Threads_C_API_test();
+ 679              		.loc 1 118 31 is_stmt 0
+ 680 0340 97000000 		call	_Z18Threads_C_API_testv@plt
+ 680      E7800000 
+ 681              	.LVL61:
+ 119:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
+ 682              		.loc 1 119 13 is_stmt 1
+ 119:test/userMain.cpp ****             printString("TEST 1 (zadatak 2, niti C API i sinhrona promena konteksta)\n");
+ 683              		.loc 1 119 24 is_stmt 0
+ 684 0348 17050000 		lla	a0,.LC8
+ 684      13050500 
+ 685 0350 97000000 		call	_Z11printStringPKc@plt
+ 685      E7800000 
+ 686              	.LVL62:
+ 121:test/userMain.cpp ****             break;
+ 687              		.loc 1 121 13 is_stmt 1
+ 688 0358 6FF01FFD 		j	.L27
+ 689              	.L36:
+ 122:test/userMain.cpp ****         case 2:
+ 690              		.loc 1 122 9
+ 124:test/userMain.cpp ****             Threads_CPP_API_test();
+ 691              		.loc 1 124 13
+ 124:test/userMain.cpp ****             Threads_CPP_API_test();
+ 692              		.loc 1 124 33 is_stmt 0
+ 693 035c 97000000 		call	_Z20Threads_CPP_API_testv@plt
+ 693      E7800000 
+ 694              	.LVL63:
+ 125:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
+ 695              		.loc 1 125 13 is_stmt 1
+ 125:test/userMain.cpp ****             printString("TEST 2 (zadatak 2., niti CPP API i sinhrona promena konteksta)\n");
+ 696              		.loc 1 125 24 is_stmt 0
+ 697 0364 17050000 		lla	a0,.LC9
+ 697      13050500 
+ 698 036c 97000000 		call	_Z11printStringPKc@plt
+ 698      E7800000 
+ 699              	.LVL64:
+ 127:test/userMain.cpp ****             break;
+ 700              		.loc 1 127 13 is_stmt 1
+ 701 0374 6FF05FFB 		j	.L27
+ 702              	.L35:
+ 128:test/userMain.cpp ****         case 3:
+ 703              		.loc 1 128 9
+ 130:test/userMain.cpp ****             producerConsumer_C_API();
+ 704              		.loc 1 130 13
+ 130:test/userMain.cpp ****             producerConsumer_C_API();
+ 705              		.loc 1 130 35 is_stmt 0
+ 706 0378 97000000 		call	_Z22producerConsumer_C_APIv@plt
+ 706      E7800000 
+ 707              	.LVL65:
+ 131:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
+ 708              		.loc 1 131 13 is_stmt 1
+GAS LISTING /tmp/ccLo4Roh.s 			page 19
+
+
+ 131:test/userMain.cpp ****             printString("TEST 3 (zadatak 3., kompletan C API sa semaforima, sinhrona promena kontek
+ 709              		.loc 1 131 24 is_stmt 0
+ 710 0380 17050000 		lla	a0,.LC10
+ 710      13050500 
+ 711 0388 97000000 		call	_Z11printStringPKc@plt
+ 711      E7800000 
+ 712              	.LVL66:
+ 133:test/userMain.cpp ****             break;
+ 713              		.loc 1 133 13 is_stmt 1
+ 714 0390 6FF09FF9 		j	.L27
+ 715              	.L34:
+ 134:test/userMain.cpp ****         case 4:
+ 716              		.loc 1 134 9
+ 136:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
+ 717              		.loc 1 136 13
+ 136:test/userMain.cpp ****             producerConsumer_CPP_Sync_API();
+ 718              		.loc 1 136 42 is_stmt 0
+ 719 0394 97000000 		call	_Z29producerConsumer_CPP_Sync_APIv@plt
+ 719      E7800000 
+ 720              	.LVL67:
+ 137:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
+ 721              		.loc 1 137 13 is_stmt 1
+ 137:test/userMain.cpp ****             printString("TEST 4 (zadatak 3., kompletan CPP API sa semaforima, sinhrona promena kont
+ 722              		.loc 1 137 24 is_stmt 0
+ 723 039c 17050000 		lla	a0,.LC11
+ 723      13050500 
+ 724 03a4 97000000 		call	_Z11printStringPKc@plt
+ 724      E7800000 
+ 725              	.LVL68:
+ 139:test/userMain.cpp ****             break;
+ 726              		.loc 1 139 13 is_stmt 1
+ 727 03ac 6FF0DFF7 		j	.L27
+ 728              	.L33:
+ 152:test/userMain.cpp ****         case 7:
+ 729              		.loc 1 152 9
+ 154:test/userMain.cpp ****             System_Mode_test();
+ 730              		.loc 1 154 13
+ 154:test/userMain.cpp ****             System_Mode_test();
+ 731              		.loc 1 154 29 is_stmt 0
+ 732 03b0 97000000 		call	_Z16System_Mode_testv@plt
+ 732      E7800000 
+ 733              	.LVL69:
+ 155:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
+ 734              		.loc 1 155 13 is_stmt 1
+ 155:test/userMain.cpp ****             printString("Test se nije uspesno zavrsio\n");
+ 735              		.loc 1 155 24 is_stmt 0
+ 736 03b8 17050000 		lla	a0,.LC12
+ 736      13050500 
+ 737 03c0 97000000 		call	_Z11printStringPKc@plt
+ 737      E7800000 
+ 738              	.LVL70:
+ 156:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
+ 739              		.loc 1 156 13 is_stmt 1
+ 156:test/userMain.cpp ****             printString("TEST 7 (zadatak 2., testiranje da li se korisnicki kod izvrsava u korisnic
+ 740              		.loc 1 156 24 is_stmt 0
+ 741 03c8 17050000 		lla	a0,.LC13
+ 741      13050500 
+GAS LISTING /tmp/ccLo4Roh.s 			page 20
+
+
+ 742 03d0 97000000 		call	_Z11printStringPKc@plt
+ 742      E7800000 
+ 743              	.LVL71:
+ 158:test/userMain.cpp ****             break;
+ 744              		.loc 1 158 13 is_stmt 1
+ 745 03d8 6FF01FF5 		j	.L27
+ 746              	.L31:
+ 159:test/userMain.cpp ****         case 8:
+ 747              		.loc 1 159 9
+ 160:test/userMain.cpp ****             myTest1();
+ 748              		.loc 1 160 13
+ 160:test/userMain.cpp ****             myTest1();
+ 749              		.loc 1 160 20 is_stmt 0
+ 750 03dc 97000000 		call	_Z7myTest1v
+ 750      E7800000 
+ 751              	.LVL72:
+ 161:test/userMain.cpp ****             break;
+ 752              		.loc 1 161 13 is_stmt 1
+ 753 03e4 6FF05FF4 		j	.L27
+ 754              	.L30:
+ 162:test/userMain.cpp ****         default:
+ 755              		.loc 1 162 9
+ 163:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
+ 756              		.loc 1 163 13
+ 163:test/userMain.cpp ****             printString("Niste uneli odgovarajuci broj za test\n");
+ 757              		.loc 1 163 24 is_stmt 0
+ 758 03e8 17050000 		lla	a0,.LC14
+ 758      13050500 
+ 759 03f0 97000000 		call	_Z11printStringPKc@plt
+ 759      E7800000 
+ 760              	.LVL73:
+ 761 03f8 6FF01FF3 		j	.L27
+ 762              		.cfi_endproc
+ 763              	.LFE10:
+ 765              		.weak	_ZTV7Thread1
+ 766              		.section	.data.rel.ro.local._ZTV7Thread1,"awG",@progbits,_ZTV7Thread1,comdat
+ 767              		.align	3
+ 770              	_ZTV7Thread1:
+ 771 0000 00000000 		.dword	0
+ 771      00000000 
+ 772 0008 00000000 		.dword	0
+ 772      00000000 
+ 773 0010 00000000 		.dword	_ZN7Thread1D1Ev
+ 773      00000000 
+ 774 0018 00000000 		.dword	_ZN7Thread1D0Ev
+ 774      00000000 
+ 775 0020 00000000 		.dword	_ZN7Thread13runEv
+ 775      00000000 
+ 776              		.globl	C
+ 777              		.globl	B
+ 778              		.globl	A
+ 779              		.bss
+ 780              		.align	3
+ 781              		.set	.LANCHOR0,. + 0
+ 784              	B:
+ 785 0000 00000000 		.zero	8
+ 785      00000000 
+GAS LISTING /tmp/ccLo4Roh.s 			page 21
+
+
+ 788              	C:
+ 789 0008 00000000 		.zero	8
+ 789      00000000 
+ 792              	A:
+ 793 0010 00000000 		.zero	8
+ 793      00000000 
+ 794              		.text
+ 795              	.Letext0:
+ 796              		.file 2 "test/../h/../lib/hw.h"
+ 797              		.file 3 "test/../h/syscall_c.hpp"
+ 798              		.file 4 "test/../h/syscall_cpp.hpp"
+ 799              		.file 5 "test/printing.hpp"
+ 800              		.file 6 "test/../test/Threads_C_API_test.hpp"
+ 801              		.file 7 "test/../test/Threads_CPP_API_test.hpp"
+ 802              		.file 8 "test/../test/ConsumerProducer_C_API_test.hpp"
+ 803              		.file 9 "test/../test/ConsumerProducer_CPP_Sync_API_test.hpp"
+ 804              		.file 10 "test/../test/System_Mode_test.hpp"
+ 2972              		.align	3
+ 2975              	DW.ref.__gxx_personality_v0:
+ 2976 0000 00000000 		.dword	__gxx_personality_v0
+ 2976      00000000 
+ 2977              		.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04) 9.4.0"
+ 2978              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccLo4Roh.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 userMain.cpp
-     /tmp/cc4UOzhB.s:38     .text:0000000000000000 _Z8userMainv
-     /tmp/cc4UOzhB.s:42     .text:0000000000000000 .L0 
-     /tmp/cc4UOzhB.s:43     .text:0000000000000000 .L0 
-     /tmp/cc4UOzhB.s:44     .text:0000000000000004 .L0 
-     /tmp/cc4UOzhB.s:49     .text:0000000000000014 .L0 
-     /tmp/cc4UOzhB.s:50     .text:0000000000000014 .L0 
-     /tmp/cc4UOzhB.s:51     .text:0000000000000014 .L0 
-     /tmp/cc4UOzhB.s:52     .text:0000000000000014 .L0 
-     /tmp/cc4UOzhB.s:54     .text:0000000000000018 .L0 
-     /tmp/cc4UOzhB.s:56     .text:0000000000000018 .L0 
-     /tmp/cc4UOzhB.s:57     .text:0000000000000018 .L0 
-     /tmp/cc4UOzhB.s:61     .text:0000000000000028 .L0 
-     /tmp/cc4UOzhB.s:62     .text:0000000000000028 .L0 
-     /tmp/cc4UOzhB.s:66     .text:0000000000000034 .L0 
-     /tmp/cc4UOzhB.s:69     .text:0000000000000038 .L0 
-     /tmp/cc4UOzhB.s:70     .text:0000000000000038 .L0 
-     /tmp/cc4UOzhB.s:73     .text:0000000000000040 .L0 
-     /tmp/cc4UOzhB.s:74     .text:0000000000000040 .L0 
-     /tmp/cc4UOzhB.s:75     .text:0000000000000040 .L0 
-     /tmp/cc4UOzhB.s:76     .text:0000000000000040 .L0 
-     /tmp/cc4UOzhB.s:78     .text:0000000000000044 .L0 
-     /tmp/cc4UOzhB.s:81     .text:000000000000004c .L0 
-     /tmp/cc4UOzhB.s:104    .text:0000000000000070 .L0 
-     /tmp/cc4UOzhB.s:105    .text:0000000000000070 .L0 
-     /tmp/cc4UOzhB.s:106    .text:0000000000000070 .L0 
-     /tmp/cc4UOzhB.s:111    .text:0000000000000080 .L0 
-     /tmp/cc4UOzhB.s:112    .text:0000000000000080 .L0 
-     /tmp/cc4UOzhB.s:113    .text:0000000000000084 .L0 
-     /tmp/cc4UOzhB.s:114    .text:0000000000000084 .L0 
-     /tmp/cc4UOzhB.s:116    .text:0000000000000088 .L0 
-     /tmp/cc4UOzhB.s:117    .text:0000000000000088 .L0 
-     /tmp/cc4UOzhB.s:119    .text:000000000000008c .L0 
-     /tmp/cc4UOzhB.s:121    .text:0000000000000090 .L0 
-     /tmp/cc4UOzhB.s:123    .text:0000000000000094 .L0 
-     /tmp/cc4UOzhB.s:126    .text:0000000000000098 .L0 
-     /tmp/cc4UOzhB.s:128    .text:0000000000000098 .L0 
-     /tmp/cc4UOzhB.s:129    .text:0000000000000098 .L0 
-     /tmp/cc4UOzhB.s:130    .text:0000000000000098 .L0 
-     /tmp/cc4UOzhB.s:133    .text:00000000000000a0 .L0 
-     /tmp/cc4UOzhB.s:134    .text:00000000000000a0 .L0 
-     /tmp/cc4UOzhB.s:138    .text:00000000000000b0 .L0 
-     /tmp/cc4UOzhB.s:141    .text:00000000000000b4 .L0 
-     /tmp/cc4UOzhB.s:142    .text:00000000000000b4 .L0 
-     /tmp/cc4UOzhB.s:143    .text:00000000000000b4 .L0 
-     /tmp/cc4UOzhB.s:146    .text:00000000000000bc .L0 
-     /tmp/cc4UOzhB.s:147    .text:00000000000000bc .L0 
-     /tmp/cc4UOzhB.s:151    .text:00000000000000cc .L0 
-     /tmp/cc4UOzhB.s:154    .text:00000000000000d0 .L0 
-     /tmp/cc4UOzhB.s:155    .text:00000000000000d0 .L0 
-     /tmp/cc4UOzhB.s:156    .text:00000000000000d0 .L0 
-     /tmp/cc4UOzhB.s:159    .text:00000000000000d8 .L0 
-     /tmp/cc4UOzhB.s:160    .text:00000000000000d8 .L0 
-     /tmp/cc4UOzhB.s:164    .text:00000000000000e8 .L0 
-     /tmp/cc4UOzhB.s:167    .text:00000000000000ec .L0 
-     /tmp/cc4UOzhB.s:168    .text:00000000000000ec .L0 
-GAS LISTING /tmp/cc4UOzhB.s 			page 10
+     /tmp/ccLo4Roh.s:10     .text._ZN7Thread13runEv:0000000000000000 _ZN7Thread13runEv
+     /tmp/ccLo4Roh.s:14     .text._ZN7Thread13runEv:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:16     .text._ZN7Thread13runEv:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:17     .text._ZN7Thread13runEv:0000000000000004 .L0 
+     /tmp/ccLo4Roh.s:22     .text._ZN7Thread13runEv:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:23     .text._ZN7Thread13runEv:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:24     .text._ZN7Thread13runEv:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:25     .text._ZN7Thread13runEv:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:27     .text._ZN7Thread13runEv:0000000000000018 .L0 
+     /tmp/ccLo4Roh.s:32     .text._ZN7Thread13runEv:000000000000001c .L0 
+     /tmp/ccLo4Roh.s:33     .text._ZN7Thread13runEv:000000000000001c .L0 
+     /tmp/ccLo4Roh.s:37     .text._ZN7Thread13runEv:0000000000000020 .L0 
+     /tmp/ccLo4Roh.s:40     .text._ZN7Thread13runEv:0000000000000028 .L0 
+     /tmp/ccLo4Roh.s:41     .text._ZN7Thread13runEv:0000000000000028 .L0 
+     /tmp/ccLo4Roh.s:45     .text._ZN7Thread13runEv:0000000000000034 .L0 
+     /tmp/ccLo4Roh.s:46     .text._ZN7Thread13runEv:0000000000000034 .L0 
+     /tmp/ccLo4Roh.s:49     .text._ZN7Thread13runEv:000000000000003c .L0 
+     /tmp/ccLo4Roh.s:56     .text._ZN7Thread13runEv:0000000000000044 .L0 
+     /tmp/ccLo4Roh.s:57     .text._ZN7Thread13runEv:0000000000000048 .L0 
+     /tmp/ccLo4Roh.s:59     .text._ZN7Thread13runEv:000000000000004c .L0 
+     /tmp/ccLo4Roh.s:60     .text._ZN7Thread13runEv:000000000000004c .L0 
+     /tmp/ccLo4Roh.s:62     .text._ZN7Thread13runEv:0000000000000050 .L0 
+     /tmp/ccLo4Roh.s:65     .text._ZN7Thread13runEv:0000000000000054 .L0 
+     /tmp/ccLo4Roh.s:68     .text._ZN7Thread13runEv:0000000000000058 .L0 
+     /tmp/ccLo4Roh.s:70     .text._ZN7Thread13runEv:000000000000005c .L0 
+     /tmp/ccLo4Roh.s:77     .text._ZN7Thread1D2Ev:0000000000000000 _ZN7Thread1D2Ev
+     /tmp/ccLo4Roh.s:80     .text._ZN7Thread1D2Ev:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:82     .text._ZN7Thread1D2Ev:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:83     .text._ZN7Thread1D2Ev:0000000000000004 .L0 
+     /tmp/ccLo4Roh.s:86     .text._ZN7Thread1D2Ev:000000000000000c .L0 
+     /tmp/ccLo4Roh.s:87     .text._ZN7Thread1D2Ev:000000000000000c .L0 
+     /tmp/ccLo4Roh.s:89     .text._ZN7Thread1D2Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:770    .data.rel.ro.local._ZTV7Thread1:0000000000000000 _ZTV7Thread1
+     /tmp/ccLo4Roh.s:92     .text._ZN7Thread1D2Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:98     .text._ZN7Thread1D2Ev:0000000000000028 .L0 
+     /tmp/ccLo4Roh.s:100    .text._ZN7Thread1D2Ev:000000000000002c .L0 
+     /tmp/ccLo4Roh.s:101    .text._ZN7Thread1D2Ev:000000000000002c .L0 
+     /tmp/ccLo4Roh.s:103    .text._ZN7Thread1D2Ev:0000000000000030 .L0 
+     /tmp/ccLo4Roh.s:105    .text._ZN7Thread1D2Ev:0000000000000034 .L0 
+     /tmp/ccLo4Roh.s:77     .text._ZN7Thread1D2Ev:0000000000000000 _ZN7Thread1D1Ev
+     /tmp/ccLo4Roh.s:114    .text._ZN7Thread1D0Ev:0000000000000000 _ZN7Thread1D0Ev
+     /tmp/ccLo4Roh.s:117    .text._ZN7Thread1D0Ev:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:119    .text._ZN7Thread1D0Ev:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:120    .text._ZN7Thread1D0Ev:0000000000000004 .L0 
+     /tmp/ccLo4Roh.s:124    .text._ZN7Thread1D0Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:125    .text._ZN7Thread1D0Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:126    .text._ZN7Thread1D0Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:128    .text._ZN7Thread1D0Ev:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:134    .text._ZN7Thread1D0Ev:0000000000000018 .L0 
+     /tmp/ccLo4Roh.s:144    .text._ZN7Thread1D0Ev:000000000000003c .L0 
+     /tmp/ccLo4Roh.s:146    .text._ZN7Thread1D0Ev:0000000000000040 .L0 
+     /tmp/ccLo4Roh.s:147    .text._ZN7Thread1D0Ev:0000000000000040 .L0 
+     /tmp/ccLo4Roh.s:149    .text._ZN7Thread1D0Ev:0000000000000044 .L0 
+     /tmp/ccLo4Roh.s:152    .text._ZN7Thread1D0Ev:0000000000000048 .L0 
+     /tmp/ccLo4Roh.s:154    .text._ZN7Thread1D0Ev:000000000000004c .L0 
+GAS LISTING /tmp/ccLo4Roh.s 			page 23
 
 
-     /tmp/cc4UOzhB.s:169    .text:00000000000000ec .L0 
-     /tmp/cc4UOzhB.s:172    .text:00000000000000f4 .L0 
-     /tmp/cc4UOzhB.s:173    .text:00000000000000f4 .L0 
-     /tmp/cc4UOzhB.s:177    .text:0000000000000104 .L0 
-     /tmp/cc4UOzhB.s:180    .text:0000000000000108 .L0 
-     /tmp/cc4UOzhB.s:181    .text:0000000000000108 .L0 
-     /tmp/cc4UOzhB.s:182    .text:0000000000000108 .L0 
-     /tmp/cc4UOzhB.s:185    .text:0000000000000110 .L0 
-     /tmp/cc4UOzhB.s:186    .text:0000000000000110 .L0 
-     /tmp/cc4UOzhB.s:190    .text:0000000000000120 .L0 
-     /tmp/cc4UOzhB.s:191    .text:0000000000000120 .L0 
-     /tmp/cc4UOzhB.s:195    .text:0000000000000130 .L0 
-     /tmp/cc4UOzhB.s:198    .text:0000000000000134 .L0 
-     /tmp/cc4UOzhB.s:199    .text:0000000000000134 .L0 
-     /tmp/cc4UOzhB.s:200    .text:0000000000000134 .L0 
-     /tmp/cc4UOzhB.s:204    .text:0000000000000148 .L0 
-     /tmp/cc4UOzhB.s:216    .text:0000000000000148 .L0 
-     /tmp/cc4UOzhB.s:8      .rodata.str1.8:0000000000000000 .LC0
-     /tmp/cc4UOzhB.s:57     .text:0000000000000018 .L0 
-     /tmp/cc4UOzhB.s:92     .rodata:0000000000000000 .L6
-     /tmp/cc4UOzhB.s:84     .text:0000000000000058 .L0 
-     /tmp/cc4UOzhB.s:11     .rodata.str1.8:0000000000000020 .LC1
-     /tmp/cc4UOzhB.s:106    .text:0000000000000070 .L0 
-     /tmp/cc4UOzhB.s:14     .rodata.str1.8:0000000000000050 .LC2
-     /tmp/cc4UOzhB.s:134    .text:00000000000000a0 .L0 
-     /tmp/cc4UOzhB.s:17     .rodata.str1.8:0000000000000090 .LC3
-     /tmp/cc4UOzhB.s:147    .text:00000000000000bc .L0 
-     /tmp/cc4UOzhB.s:20     .rodata.str1.8:00000000000000d0 .LC4
-     /tmp/cc4UOzhB.s:160    .text:00000000000000d8 .L0 
-     /tmp/cc4UOzhB.s:23     .rodata.str1.8:0000000000000120 .LC5
-     /tmp/cc4UOzhB.s:173    .text:00000000000000f4 .L0 
-     /tmp/cc4UOzhB.s:26     .rodata.str1.8:0000000000000178 .LC6
-     /tmp/cc4UOzhB.s:186    .text:0000000000000110 .L0 
-     /tmp/cc4UOzhB.s:29     .rodata.str1.8:0000000000000198 .LC7
-     /tmp/cc4UOzhB.s:191    .text:0000000000000120 .L0 
-     /tmp/cc4UOzhB.s:32     .rodata.str1.8:00000000000001f0 .LC8
-     /tmp/cc4UOzhB.s:200    .text:0000000000000134 .L0 
-     /tmp/cc4UOzhB.s:102    .text:0000000000000070 .L12
-     /tmp/cc4UOzhB.s:196    .text:0000000000000134 .L4
-     /tmp/cc4UOzhB.s:110    .text:0000000000000080 .L1
-     /tmp/cc4UOzhB.s:125    .text:0000000000000098 .L10
-     /tmp/cc4UOzhB.s:139    .text:00000000000000b4 .L9
-     /tmp/cc4UOzhB.s:152    .text:00000000000000d0 .L8
-     /tmp/cc4UOzhB.s:165    .text:00000000000000ec .L7
-     /tmp/cc4UOzhB.s:178    .text:0000000000000108 .L5
-     /tmp/cc4UOzhB.s:524    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-     /tmp/cc4UOzhB.s:813    .debug_str:00000000000000f4 .LASF32
-     /tmp/cc4UOzhB.s:827    .debug_str:000000000000020a .LASF33
-     /tmp/cc4UOzhB.s:833    .debug_str:0000000000000244 .LASF34
-     /tmp/cc4UOzhB.s:5      .text:0000000000000000 .Ltext0
-     /tmp/cc4UOzhB.s:207    .text:0000000000000148 .Letext0
-     /tmp/cc4UOzhB.s:781    .debug_line:0000000000000000 .Ldebug_line0
-     /tmp/cc4UOzhB.s:819    .debug_str:00000000000001c6 .LASF0
-     /tmp/cc4UOzhB.s:809    .debug_str:00000000000000d5 .LASF1
-     /tmp/cc4UOzhB.s:803    .debug_str:00000000000000b0 .LASF2
-     /tmp/cc4UOzhB.s:791    .debug_str:000000000000003b .LASF4
-     /tmp/cc4UOzhB.s:807    .debug_str:00000000000000c3 .LASF3
-GAS LISTING /tmp/cc4UOzhB.s 			page 11
+     /tmp/ccLo4Roh.s:168    .text:0000000000000000 _Z5testAPv
+     /tmp/ccLo4Roh.s:171    .text:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:172    .text:0000000000000000 .L0 
+     /tmp/ccLo4Roh.s:173    .text:0000000000000004 .L0 
+     /tmp/ccLo4Roh.s:177    .text:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:178    .text:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:179    .text:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:181    .text:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:183    .text:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:184    .text:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:190    .text:0000000000000030 .L0 
+     /tmp/ccLo4Roh.s:191    .text:0000000000000030 .L0 
+     /tmp/ccLo4Roh.s:196    .text:0000000000000044 .L0 
+     /tmp/ccLo4Roh.s:197    .text:0000000000000044 .L0 
+     /tmp/ccLo4Roh.s:202    .text:0000000000000054 .L0 
+     /tmp/ccLo4Roh.s:203    .text:0000000000000058 .L0 
+     /tmp/ccLo4Roh.s:205    .text:000000000000005c .L0 
+     /tmp/ccLo4Roh.s:206    .text:000000000000005c .L0 
+     /tmp/ccLo4Roh.s:208    .text:0000000000000060 .L0 
+     /tmp/ccLo4Roh.s:210    .text:0000000000000064 .L0 
+     /tmp/ccLo4Roh.s:212    .text:0000000000000068 .L0 
+     /tmp/ccLo4Roh.s:226    .text:0000000000000068 _Z5testBPv
+     /tmp/ccLo4Roh.s:229    .text:0000000000000068 .L0 
+     /tmp/ccLo4Roh.s:230    .text:0000000000000068 .L0 
+     /tmp/ccLo4Roh.s:231    .text:000000000000006c .L0 
+     /tmp/ccLo4Roh.s:235    .text:0000000000000078 .L0 
+     /tmp/ccLo4Roh.s:236    .text:0000000000000078 .L0 
+     /tmp/ccLo4Roh.s:237    .text:0000000000000078 .L0 
+     /tmp/ccLo4Roh.s:239    .text:000000000000007c .L0 
+     /tmp/ccLo4Roh.s:241    .text:000000000000007c .L0 
+     /tmp/ccLo4Roh.s:242    .text:000000000000007c .L0 
+     /tmp/ccLo4Roh.s:248    .text:0000000000000098 .L0 
+     /tmp/ccLo4Roh.s:249    .text:0000000000000098 .L0 
+     /tmp/ccLo4Roh.s:254    .text:00000000000000ac .L0 
+     /tmp/ccLo4Roh.s:255    .text:00000000000000ac .L0 
+     /tmp/ccLo4Roh.s:260    .text:00000000000000bc .L0 
+     /tmp/ccLo4Roh.s:261    .text:00000000000000c0 .L0 
+     /tmp/ccLo4Roh.s:263    .text:00000000000000c4 .L0 
+     /tmp/ccLo4Roh.s:264    .text:00000000000000c4 .L0 
+     /tmp/ccLo4Roh.s:266    .text:00000000000000c8 .L0 
+     /tmp/ccLo4Roh.s:268    .text:00000000000000cc .L0 
+     /tmp/ccLo4Roh.s:270    .text:00000000000000d0 .L0 
+     /tmp/ccLo4Roh.s:284    .text:00000000000000d0 _Z5testCPv
+     /tmp/ccLo4Roh.s:287    .text:00000000000000d0 .L0 
+     /tmp/ccLo4Roh.s:288    .text:00000000000000d0 .L0 
+     /tmp/ccLo4Roh.s:289    .text:00000000000000d4 .L0 
+     /tmp/ccLo4Roh.s:293    .text:00000000000000e0 .L0 
+     /tmp/ccLo4Roh.s:294    .text:00000000000000e0 .L0 
+     /tmp/ccLo4Roh.s:295    .text:00000000000000e0 .L0 
+     /tmp/ccLo4Roh.s:297    .text:00000000000000e4 .L0 
+     /tmp/ccLo4Roh.s:299    .text:00000000000000e4 .L0 
+     /tmp/ccLo4Roh.s:300    .text:00000000000000e4 .L0 
+     /tmp/ccLo4Roh.s:305    .text:00000000000000f4 .L0 
+     /tmp/ccLo4Roh.s:306    .text:00000000000000f4 .L0 
+     /tmp/ccLo4Roh.s:311    .text:0000000000000104 .L0 
+     /tmp/ccLo4Roh.s:312    .text:0000000000000104 .L0 
+     /tmp/ccLo4Roh.s:317    .text:0000000000000114 .L0 
+GAS LISTING /tmp/ccLo4Roh.s 			page 24
 
 
-     /tmp/cc4UOzhB.s:785    .debug_str:0000000000000013 .LASF5
-     /tmp/cc4UOzhB.s:783    .debug_str:0000000000000000 .LASF6
-     /tmp/cc4UOzhB.s:797    .debug_str:000000000000007b .LASF7
-     /tmp/cc4UOzhB.s:821    .debug_str:00000000000001d3 .LASF8
-     /tmp/cc4UOzhB.s:789    .debug_str:000000000000002d .LASF9
-     /tmp/cc4UOzhB.s:855    .debug_str:0000000000000336 .LASF10
-     /tmp/cc4UOzhB.s:799    .debug_str:000000000000008e .LASF11
-     /tmp/cc4UOzhB.s:847    .debug_str:0000000000000304 .LASF12
-     /tmp/cc4UOzhB.s:829    .debug_str:000000000000021c .LASF13
-     /tmp/cc4UOzhB.s:811    .debug_str:00000000000000e8 .LASF14
-     /tmp/cc4UOzhB.s:793    .debug_str:0000000000000042 .LASF15
-     /tmp/cc4UOzhB.s:825    .debug_str:00000000000001f4 .LASF16
-     /tmp/cc4UOzhB.s:815    .debug_str:00000000000001b8 .LASF35
-     /tmp/cc4UOzhB.s:851    .debug_str:000000000000031d .LASF36
-     /tmp/cc4UOzhB.s:39     .text:0000000000000000 .LFB0
-     /tmp/cc4UOzhB.s:205    .text:0000000000000148 .LFE0
-     /tmp/cc4UOzhB.s:817    .debug_str:00000000000001c1 .LASF17
-     /tmp/cc4UOzhB.s:759    .debug_loc:0000000000000000 .LLST0
-     /tmp/cc4UOzhB.s:59     .text:0000000000000028 .LVL0
-     /tmp/cc4UOzhB.s:63     .text:0000000000000030 .LVL1
-     /tmp/cc4UOzhB.s:71     .text:0000000000000040 .LVL3
-     /tmp/cc4UOzhB.s:108    .text:0000000000000080 .LVL4
-     /tmp/cc4UOzhB.s:131    .text:00000000000000a0 .LVL5
-     /tmp/cc4UOzhB.s:136    .text:00000000000000b0 .LVL6
-     /tmp/cc4UOzhB.s:144    .text:00000000000000bc .LVL7
-     /tmp/cc4UOzhB.s:149    .text:00000000000000cc .LVL8
-     /tmp/cc4UOzhB.s:157    .text:00000000000000d8 .LVL9
-     /tmp/cc4UOzhB.s:162    .text:00000000000000e8 .LVL10
-     /tmp/cc4UOzhB.s:170    .text:00000000000000f4 .LVL11
-     /tmp/cc4UOzhB.s:175    .text:0000000000000104 .LVL12
-     /tmp/cc4UOzhB.s:183    .text:0000000000000110 .LVL13
-     /tmp/cc4UOzhB.s:188    .text:0000000000000120 .LVL14
-     /tmp/cc4UOzhB.s:193    .text:0000000000000130 .LVL15
-     /tmp/cc4UOzhB.s:202    .text:0000000000000144 .LVL16
-     /tmp/cc4UOzhB.s:801    .debug_str:000000000000009d .LASF18
-     /tmp/cc4UOzhB.s:853    .debug_str:000000000000032a .LASF20
-     /tmp/cc4UOzhB.s:849    .debug_str:0000000000000314 .LASF19
-     /tmp/cc4UOzhB.s:805    .debug_str:00000000000000be .LASF21
-     /tmp/cc4UOzhB.s:831    .debug_str:000000000000022c .LASF22
-     /tmp/cc4UOzhB.s:787    .debug_str:000000000000001a .LASF23
-     /tmp/cc4UOzhB.s:843    .debug_str:00000000000002cc .LASF24
-     /tmp/cc4UOzhB.s:835    .debug_str:000000000000026e .LASF25
-     /tmp/cc4UOzhB.s:839    .debug_str:000000000000029a .LASF26
-     /tmp/cc4UOzhB.s:837    .debug_str:0000000000000283 .LASF27
-     /tmp/cc4UOzhB.s:795    .debug_str:0000000000000058 .LASF28
-     /tmp/cc4UOzhB.s:845    .debug_str:00000000000002e6 .LASF29
-     /tmp/cc4UOzhB.s:841    .debug_str:00000000000002b6 .LASF30
-     /tmp/cc4UOzhB.s:823    .debug_str:00000000000001e3 .LASF31
-     /tmp/cc4UOzhB.s:67     .text:0000000000000038 .LVL2
-     /tmp/cc4UOzhB.s:217    .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccLo4Roh.s:318    .text:0000000000000114 .L0 
+     /tmp/ccLo4Roh.s:324    .text:0000000000000130 .L0 
+     /tmp/ccLo4Roh.s:325    .text:0000000000000130 .L0 
+     /tmp/ccLo4Roh.s:330    .text:0000000000000144 .L0 
+     /tmp/ccLo4Roh.s:331    .text:0000000000000148 .L0 
+     /tmp/ccLo4Roh.s:333    .text:000000000000014c .L0 
+     /tmp/ccLo4Roh.s:334    .text:000000000000014c .L0 
+     /tmp/ccLo4Roh.s:336    .text:0000000000000150 .L0 
+     /tmp/ccLo4Roh.s:338    .text:0000000000000154 .L0 
+     /tmp/ccLo4Roh.s:340    .text:0000000000000158 .L0 
+     /tmp/ccLo4Roh.s:346    .text:0000000000000158 _Z6myTestv
+     /tmp/ccLo4Roh.s:349    .text:0000000000000158 .L0 
+     /tmp/ccLo4Roh.s:2975   .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
+     /tmp/ccLo4Roh.s:352    .text:0000000000000158 .L0 
+     /tmp/ccLo4Roh.s:353    .text:000000000000015c .L0 
+     /tmp/ccLo4Roh.s:359    .text:0000000000000170 .L0 
+     /tmp/ccLo4Roh.s:360    .text:0000000000000170 .L0 
+     /tmp/ccLo4Roh.s:361    .text:0000000000000170 .L0 
+     /tmp/ccLo4Roh.s:362    .text:0000000000000170 .L0 
+     /tmp/ccLo4Roh.s:363    .text:0000000000000170 .L0 
+     /tmp/ccLo4Roh.s:365    .text:0000000000000174 .L0 
+     /tmp/ccLo4Roh.s:367    .text:0000000000000174 .L0 
+     /tmp/ccLo4Roh.s:370    .text:0000000000000174 .L0 
+     /tmp/ccLo4Roh.s:371    .text:0000000000000174 .L0 
+     /tmp/ccLo4Roh.s:378    .text:000000000000017c .L0 
+     /tmp/ccLo4Roh.s:381    .text:0000000000000188 .L0 
+     /tmp/ccLo4Roh.s:382    .text:0000000000000188 .L0 
+     /tmp/ccLo4Roh.s:387    .text:000000000000018c .L0 
+     /tmp/ccLo4Roh.s:392    .text:000000000000019c .L0 
+     /tmp/ccLo4Roh.s:396    .text:00000000000001a0 .L0 
+     /tmp/ccLo4Roh.s:399    .text:00000000000001a8 .L0 
+     /tmp/ccLo4Roh.s:400    .text:00000000000001a8 .L0 
+     /tmp/ccLo4Roh.s:413    .text:00000000000001c0 .L0 
+     /tmp/ccLo4Roh.s:424    .text:00000000000001cc .L0 
+     /tmp/ccLo4Roh.s:428    .text:00000000000001d0 .L0 
+     /tmp/ccLo4Roh.s:432    .text:00000000000001d8 .L0 
+     /tmp/ccLo4Roh.s:433    .text:00000000000001d8 .L0 
+     /tmp/ccLo4Roh.s:438    .text:00000000000001e4 .L0 
+     /tmp/ccLo4Roh.s:445    .text:00000000000001ec .L0 
+     /tmp/ccLo4Roh.s:446    .text:00000000000001ec .L0 
+     /tmp/ccLo4Roh.s:449    .text:00000000000001f4 .L0 
+     /tmp/ccLo4Roh.s:450    .text:00000000000001f8 .L0 
+     /tmp/ccLo4Roh.s:451    .text:00000000000001f8 .L0 
+     /tmp/ccLo4Roh.s:453    .text:00000000000001fc .L0 
+     /tmp/ccLo4Roh.s:454    .text:00000000000001fc .L0 
+     /tmp/ccLo4Roh.s:456    .text:0000000000000200 .L0 
+     /tmp/ccLo4Roh.s:459    .text:0000000000000204 .L0 
+     /tmp/ccLo4Roh.s:462    .text:0000000000000208 .L0 
+     /tmp/ccLo4Roh.s:464    .text:000000000000020c .L0 
+     /tmp/ccLo4Roh.s:468    .text:0000000000000210 .L0 
+     /tmp/ccLo4Roh.s:473    .text:0000000000000214 .L0 
+     /tmp/ccLo4Roh.s:481    .text:000000000000022c .L0 
+     /tmp/ccLo4Roh.s:507    .text:000000000000022c _Z7myTest1v
+     /tmp/ccLo4Roh.s:510    .text:000000000000022c .L0 
+     /tmp/ccLo4Roh.s:511    .text:000000000000022c .L0 
+     /tmp/ccLo4Roh.s:512    .text:0000000000000230 .L0 
+     /tmp/ccLo4Roh.s:515    .text:0000000000000238 .L0 
+GAS LISTING /tmp/ccLo4Roh.s 			page 25
+
+
+     /tmp/ccLo4Roh.s:516    .text:0000000000000238 .L0 
+     /tmp/ccLo4Roh.s:518    .text:000000000000023c .L0 
+     /tmp/ccLo4Roh.s:520    .text:000000000000023c .L0 
+     /tmp/ccLo4Roh.s:521    .text:000000000000023c .L0 
+     /tmp/ccLo4Roh.s:527    .text:0000000000000258 .L0 
+     /tmp/ccLo4Roh.s:528    .text:0000000000000258 .L0 
+     /tmp/ccLo4Roh.s:534    .text:0000000000000274 .L0 
+     /tmp/ccLo4Roh.s:535    .text:0000000000000274 .L0 
+     /tmp/ccLo4Roh.s:541    .text:0000000000000290 .L0 
+     /tmp/ccLo4Roh.s:542    .text:0000000000000290 .L0 
+     /tmp/ccLo4Roh.s:545    .text:0000000000000298 .L0 
+     /tmp/ccLo4Roh.s:546    .text:000000000000029c .L0 
+     /tmp/ccLo4Roh.s:548    .text:00000000000002a0 .L0 
+     /tmp/ccLo4Roh.s:549    .text:00000000000002a0 .L0 
+     /tmp/ccLo4Roh.s:551    .text:00000000000002a4 .L0 
+     /tmp/ccLo4Roh.s:553    .text:00000000000002a8 .L0 
+     /tmp/ccLo4Roh.s:588    .text:00000000000002a8 _Z8userMainv
+     /tmp/ccLo4Roh.s:591    .text:00000000000002a8 .L0 
+     /tmp/ccLo4Roh.s:592    .text:00000000000002a8 .L0 
+     /tmp/ccLo4Roh.s:593    .text:00000000000002ac .L0 
+     /tmp/ccLo4Roh.s:598    .text:00000000000002bc .L0 
+     /tmp/ccLo4Roh.s:599    .text:00000000000002bc .L0 
+     /tmp/ccLo4Roh.s:600    .text:00000000000002bc .L0 
+     /tmp/ccLo4Roh.s:601    .text:00000000000002bc .L0 
+     /tmp/ccLo4Roh.s:603    .text:00000000000002c0 .L0 
+     /tmp/ccLo4Roh.s:605    .text:00000000000002c0 .L0 
+     /tmp/ccLo4Roh.s:606    .text:00000000000002c0 .L0 
+     /tmp/ccLo4Roh.s:610    .text:00000000000002d0 .L0 
+     /tmp/ccLo4Roh.s:611    .text:00000000000002d0 .L0 
+     /tmp/ccLo4Roh.s:615    .text:00000000000002dc .L0 
+     /tmp/ccLo4Roh.s:618    .text:00000000000002e0 .L0 
+     /tmp/ccLo4Roh.s:619    .text:00000000000002e0 .L0 
+     /tmp/ccLo4Roh.s:622    .text:00000000000002e8 .L0 
+     /tmp/ccLo4Roh.s:623    .text:00000000000002e8 .L0 
+     /tmp/ccLo4Roh.s:624    .text:00000000000002e8 .L0 
+     /tmp/ccLo4Roh.s:625    .text:00000000000002e8 .L0 
+     /tmp/ccLo4Roh.s:627    .text:00000000000002ec .L0 
+     /tmp/ccLo4Roh.s:630    .text:00000000000002f4 .L0 
+     /tmp/ccLo4Roh.s:654    .text:0000000000000318 .L0 
+     /tmp/ccLo4Roh.s:655    .text:0000000000000318 .L0 
+     /tmp/ccLo4Roh.s:656    .text:0000000000000318 .L0 
+     /tmp/ccLo4Roh.s:661    .text:0000000000000328 .L0 
+     /tmp/ccLo4Roh.s:662    .text:0000000000000328 .L0 
+     /tmp/ccLo4Roh.s:663    .text:000000000000032c .L0 
+     /tmp/ccLo4Roh.s:664    .text:000000000000032c .L0 
+     /tmp/ccLo4Roh.s:666    .text:0000000000000330 .L0 
+     /tmp/ccLo4Roh.s:667    .text:0000000000000330 .L0 
+     /tmp/ccLo4Roh.s:669    .text:0000000000000334 .L0 
+     /tmp/ccLo4Roh.s:671    .text:0000000000000338 .L0 
+     /tmp/ccLo4Roh.s:673    .text:000000000000033c .L0 
+     /tmp/ccLo4Roh.s:676    .text:0000000000000340 .L0 
+     /tmp/ccLo4Roh.s:678    .text:0000000000000340 .L0 
+     /tmp/ccLo4Roh.s:679    .text:0000000000000340 .L0 
+     /tmp/ccLo4Roh.s:680    .text:0000000000000340 .L0 
+     /tmp/ccLo4Roh.s:683    .text:0000000000000348 .L0 
+     /tmp/ccLo4Roh.s:684    .text:0000000000000348 .L0 
+     /tmp/ccLo4Roh.s:688    .text:0000000000000358 .L0 
+GAS LISTING /tmp/ccLo4Roh.s 			page 26
+
+
+     /tmp/ccLo4Roh.s:691    .text:000000000000035c .L0 
+     /tmp/ccLo4Roh.s:692    .text:000000000000035c .L0 
+     /tmp/ccLo4Roh.s:693    .text:000000000000035c .L0 
+     /tmp/ccLo4Roh.s:696    .text:0000000000000364 .L0 
+     /tmp/ccLo4Roh.s:697    .text:0000000000000364 .L0 
+     /tmp/ccLo4Roh.s:701    .text:0000000000000374 .L0 
+     /tmp/ccLo4Roh.s:704    .text:0000000000000378 .L0 
+     /tmp/ccLo4Roh.s:705    .text:0000000000000378 .L0 
+     /tmp/ccLo4Roh.s:706    .text:0000000000000378 .L0 
+     /tmp/ccLo4Roh.s:709    .text:0000000000000380 .L0 
+     /tmp/ccLo4Roh.s:710    .text:0000000000000380 .L0 
+     /tmp/ccLo4Roh.s:714    .text:0000000000000390 .L0 
+     /tmp/ccLo4Roh.s:717    .text:0000000000000394 .L0 
+     /tmp/ccLo4Roh.s:718    .text:0000000000000394 .L0 
+     /tmp/ccLo4Roh.s:719    .text:0000000000000394 .L0 
+     /tmp/ccLo4Roh.s:722    .text:000000000000039c .L0 
+     /tmp/ccLo4Roh.s:723    .text:000000000000039c .L0 
+     /tmp/ccLo4Roh.s:727    .text:00000000000003ac .L0 
+     /tmp/ccLo4Roh.s:730    .text:00000000000003b0 .L0 
+     /tmp/ccLo4Roh.s:731    .text:00000000000003b0 .L0 
+     /tmp/ccLo4Roh.s:732    .text:00000000000003b0 .L0 
+     /tmp/ccLo4Roh.s:735    .text:00000000000003b8 .L0 
+     /tmp/ccLo4Roh.s:736    .text:00000000000003b8 .L0 
+     /tmp/ccLo4Roh.s:740    .text:00000000000003c8 .L0 
+     /tmp/ccLo4Roh.s:741    .text:00000000000003c8 .L0 
+     /tmp/ccLo4Roh.s:745    .text:00000000000003d8 .L0 
+     /tmp/ccLo4Roh.s:748    .text:00000000000003dc .L0 
+     /tmp/ccLo4Roh.s:749    .text:00000000000003dc .L0 
+     /tmp/ccLo4Roh.s:750    .text:00000000000003dc .L0 
+     /tmp/ccLo4Roh.s:753    .text:00000000000003e4 .L0 
+     /tmp/ccLo4Roh.s:756    .text:00000000000003e8 .L0 
+     /tmp/ccLo4Roh.s:757    .text:00000000000003e8 .L0 
+     /tmp/ccLo4Roh.s:758    .text:00000000000003e8 .L0 
+     /tmp/ccLo4Roh.s:762    .text:00000000000003fc .L0 
+     /tmp/ccLo4Roh.s:788    .bss:0000000000000008 C
+     /tmp/ccLo4Roh.s:784    .bss:0000000000000000 B
+     /tmp/ccLo4Roh.s:792    .bss:0000000000000010 A
+     /tmp/ccLo4Roh.s:781    .bss:0000000000000000 .LANCHOR0
+     /tmp/ccLo4Roh.s:73     .text._ZN7Thread13runEv:000000000000005c .L0 
+     /tmp/ccLo4Roh.s:110    .text._ZN7Thread1D2Ev:0000000000000034 .L0 
+     /tmp/ccLo4Roh.s:157    .text._ZN7Thread1D0Ev:000000000000004c .L0 
+     /tmp/ccLo4Roh.s:805    .text:00000000000003fc .L0 
+     /tmp/ccLo4Roh.s:184    .text:0000000000000014 .L0 
+     /tmp/ccLo4Roh.s:159    .rodata.str1.8:0000000000000000 .LC0
+     /tmp/ccLo4Roh.s:185    .text:000000000000001c .L0 
+     /tmp/ccLo4Roh.s:162    .rodata.str1.8:0000000000000010 .LC1
+     /tmp/ccLo4Roh.s:191    .text:0000000000000030 .L0 
+     /tmp/ccLo4Roh.s:242    .text:000000000000007c .L0 
+     /tmp/ccLo4Roh.s:217    .rodata.str1.8:0000000000000020 .LC2
+     /tmp/ccLo4Roh.s:243    .text:0000000000000084 .L0 
+     /tmp/ccLo4Roh.s:220    .rodata.str1.8:0000000000000038 .LC3
+     /tmp/ccLo4Roh.s:249    .text:0000000000000098 .L0 
+     /tmp/ccLo4Roh.s:318    .text:0000000000000114 .L0 
+     /tmp/ccLo4Roh.s:275    .rodata.str1.8:0000000000000050 .LC4
+     /tmp/ccLo4Roh.s:319    .text:000000000000011c .L0 
+     /tmp/ccLo4Roh.s:278    .rodata.str1.8:0000000000000060 .LC5
+     /tmp/ccLo4Roh.s:325    .text:0000000000000130 .L0 
+GAS LISTING /tmp/ccLo4Roh.s 			page 27
+
+
+     /tmp/ccLo4Roh.s:378    .text:000000000000017c .L0 
+     /tmp/ccLo4Roh.s:522    .text:0000000000000240 .L0 
+     /tmp/ccLo4Roh.s:523    .text:0000000000000248 .L0 
+     /tmp/ccLo4Roh.s:529    .text:000000000000025c .L0 
+     /tmp/ccLo4Roh.s:530    .text:0000000000000264 .L0 
+     /tmp/ccLo4Roh.s:536    .text:0000000000000278 .L0 
+     /tmp/ccLo4Roh.s:537    .text:0000000000000280 .L0 
+     /tmp/ccLo4Roh.s:558    .rodata.str1.8:0000000000000070 .LC6
+     /tmp/ccLo4Roh.s:606    .text:00000000000002c0 .L0 
+     /tmp/ccLo4Roh.s:641    .rodata:0000000000000000 .L32
+     /tmp/ccLo4Roh.s:633    .text:0000000000000300 .L0 
+     /tmp/ccLo4Roh.s:561    .rodata.str1.8:0000000000000090 .LC7
+     /tmp/ccLo4Roh.s:656    .text:0000000000000318 .L0 
+     /tmp/ccLo4Roh.s:564    .rodata.str1.8:00000000000000c0 .LC8
+     /tmp/ccLo4Roh.s:684    .text:0000000000000348 .L0 
+     /tmp/ccLo4Roh.s:567    .rodata.str1.8:0000000000000100 .LC9
+     /tmp/ccLo4Roh.s:697    .text:0000000000000364 .L0 
+     /tmp/ccLo4Roh.s:570    .rodata.str1.8:0000000000000140 .LC10
+     /tmp/ccLo4Roh.s:710    .text:0000000000000380 .L0 
+     /tmp/ccLo4Roh.s:573    .rodata.str1.8:0000000000000190 .LC11
+     /tmp/ccLo4Roh.s:723    .text:000000000000039c .L0 
+     /tmp/ccLo4Roh.s:576    .rodata.str1.8:00000000000001e8 .LC12
+     /tmp/ccLo4Roh.s:736    .text:00000000000003b8 .L0 
+     /tmp/ccLo4Roh.s:579    .rodata.str1.8:0000000000000208 .LC13
+     /tmp/ccLo4Roh.s:741    .text:00000000000003c8 .L0 
+     /tmp/ccLo4Roh.s:582    .rodata.str1.8:0000000000000260 .LC14
+     /tmp/ccLo4Roh.s:758    .text:00000000000003e8 .L0 
+     /tmp/ccLo4Roh.s:394    .text:00000000000001a0 .L17
+     /tmp/ccLo4Roh.s:418    .text:00000000000001cc .L20
+     /tmp/ccLo4Roh.s:374    .text:000000000000017c .L24
+     /tmp/ccLo4Roh.s:442    .text:00000000000001ec .L18
+     /tmp/ccLo4Roh.s:425    .text:00000000000001d0 .L16
+     /tmp/ccLo4Roh.s:652    .text:0000000000000318 .L39
+     /tmp/ccLo4Roh.s:754    .text:00000000000003e8 .L30
+     /tmp/ccLo4Roh.s:660    .text:0000000000000328 .L27
+     /tmp/ccLo4Roh.s:53     .text._ZN7Thread13runEv:0000000000000044 .L1
+     /tmp/ccLo4Roh.s:35     .text._ZN7Thread13runEv:0000000000000020 .L3
+     /tmp/ccLo4Roh.s:92     .text._ZN7Thread1D2Ev:0000000000000010 .L0 
+     /tmp/ccLo4Roh.s:134    .text._ZN7Thread1D0Ev:0000000000000018 .L0 
+     /tmp/ccLo4Roh.s:401    .text:00000000000001ac .LEHB0
+     /tmp/ccLo4Roh.s:347    .text:0000000000000158 .LFB5
+     /tmp/ccLo4Roh.s:404    .text:00000000000001b4 .LEHE0
+     /tmp/ccLo4Roh.s:409    .text:00000000000001c0 .LEHB1
+     /tmp/ccLo4Roh.s:415    .text:00000000000001c8 .LEHE1
+     /tmp/ccLo4Roh.s:467    .text:0000000000000210 .L21
+     /tmp/ccLo4Roh.s:434    .text:00000000000001dc .LEHB2
+     /tmp/ccLo4Roh.s:479    .text:000000000000022c .LEHE2
+     /tmp/ccLo4Roh.s:675    .text:0000000000000340 .L37
+     /tmp/ccLo4Roh.s:689    .text:000000000000035c .L36
+     /tmp/ccLo4Roh.s:702    .text:0000000000000378 .L35
+     /tmp/ccLo4Roh.s:715    .text:0000000000000394 .L34
+     /tmp/ccLo4Roh.s:728    .text:00000000000003b0 .L33
+     /tmp/ccLo4Roh.s:746    .text:00000000000003dc .L31
+     /tmp/ccLo4Roh.s:1820   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/ccLo4Roh.s:2945   .debug_str:0000000000000439 .LASF76
+     /tmp/ccLo4Roh.s:2813   .debug_str:000000000000007f .LASF77
+     /tmp/ccLo4Roh.s:2909   .debug_str:0000000000000327 .LASF78
+GAS LISTING /tmp/ccLo4Roh.s 			page 28
+
+
+     /tmp/ccLo4Roh.s:2765   .debug_ranges:0000000000000000 .Ldebug_ranges0
+     /tmp/ccLo4Roh.s:2789   .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/ccLo4Roh.s:2895   .debug_str:00000000000002ae .LASF0
+     /tmp/ccLo4Roh.s:2903   .debug_str:00000000000002e0 .LASF1
+     /tmp/ccLo4Roh.s:2887   .debug_str:0000000000000274 .LASF2
+     /tmp/ccLo4Roh.s:2865   .debug_str:00000000000001e0 .LASF4
+     /tmp/ccLo4Roh.s:2935   .debug_str:00000000000003f5 .LASF3
+     /tmp/ccLo4Roh.s:2809   .debug_str:0000000000000068 .LASF5
+     /tmp/ccLo4Roh.s:2907   .debug_str:0000000000000314 .LASF6
+     /tmp/ccLo4Roh.s:2893   .debug_str:000000000000029b .LASF7
+     /tmp/ccLo4Roh.s:2953   .debug_str:000000000000052f .LASF8
+     /tmp/ccLo4Roh.s:2853   .debug_str:000000000000019f .LASF9
+     /tmp/ccLo4Roh.s:2915   .debug_str:000000000000036a .LASF10
+     /tmp/ccLo4Roh.s:2947   .debug_str:00000000000004fd .LASF11
+     /tmp/ccLo4Roh.s:2811   .debug_str:000000000000006f .LASF12
+     /tmp/ccLo4Roh.s:2795   .debug_str:0000000000000014 .LASF13
+     /tmp/ccLo4Roh.s:2817   .debug_str:000000000000009c .LASF14
+     /tmp/ccLo4Roh.s:2929   .debug_str:00000000000003c8 .LASF15
+     /tmp/ccLo4Roh.s:2827   .debug_str:00000000000000f4 .LASF16
+     /tmp/ccLo4Roh.s:2791   .debug_str:0000000000000000 .LASF17
+     /tmp/ccLo4Roh.s:2843   .debug_str:000000000000017d .LASF18
+     /tmp/ccLo4Roh.s:2859   .debug_str:00000000000001ba .LASF19
+     /tmp/ccLo4Roh.s:2923   .debug_str:000000000000039d .LASF20
+     /tmp/ccLo4Roh.s:2939   .debug_str:0000000000000417 .LASF21
+     /tmp/ccLo4Roh.s:2951   .debug_str:000000000000051c .LASF22
+     /tmp/ccLo4Roh.s:2949   .debug_str:000000000000050c .LASF79
+     /tmp/ccLo4Roh.s:2861   .debug_str:00000000000001bf .LASF80
+     /tmp/ccLo4Roh.s:2897   .debug_str:00000000000002bb .LASF81
+     /tmp/ccLo4Roh.s:2913   .debug_str:0000000000000361 .LASF82
+     /tmp/ccLo4Roh.s:2825   .debug_str:00000000000000e4 .LASF83
+     /tmp/ccLo4Roh.s:2855   .debug_str:00000000000001ad .LASF84
+     /tmp/ccLo4Roh.s:2963   .debug_str:0000000000000583 .LASF44
+     /tmp/ccLo4Roh.s:2857   .debug_str:00000000000001b4 .LASF46
+     /tmp/ccLo4Roh.s:2921   .debug_str:0000000000000398 .LASF23
+     /tmp/ccLo4Roh.s:2917   .debug_str:0000000000000379 .LASF24
+     /tmp/ccLo4Roh.s:2911   .debug_str:0000000000000351 .LASF25
+     /tmp/ccLo4Roh.s:115    .text._ZN7Thread1D0Ev:0000000000000000 .LFB14
+     /tmp/ccLo4Roh.s:155    .text._ZN7Thread1D0Ev:000000000000004c .LFE14
+     /tmp/ccLo4Roh.s:2594   .debug_loc:0000000000000000 .LLST3
+     /tmp/ccLo4Roh.s:131    .text._ZN7Thread1D0Ev:0000000000000018 .LBB12
+     /tmp/ccLo4Roh.s:139    .text._ZN7Thread1D0Ev:000000000000002c .LBE12
+     /tmp/ccLo4Roh.s:2612   .debug_loc:000000000000004c .LLST4
+     /tmp/ccLo4Roh.s:137    .text._ZN7Thread1D0Ev:000000000000002c .LVL13
+     /tmp/ccLo4Roh.s:142    .text._ZN7Thread1D0Ev:0000000000000038 .LVL14
+     /tmp/ccLo4Roh.s:2873   .debug_str:000000000000021c .LASF26
+     /tmp/ccLo4Roh.s:78     .text._ZN7Thread1D2Ev:0000000000000000 .LFB12
+     /tmp/ccLo4Roh.s:106    .text._ZN7Thread1D2Ev:0000000000000034 .LFE12
+     /tmp/ccLo4Roh.s:2623   .debug_loc:0000000000000082 .LLST2
+     /tmp/ccLo4Roh.s:95     .text._ZN7Thread1D2Ev:0000000000000024 .LVL10
+     /tmp/ccLo4Roh.s:2837   .debug_str:0000000000000142 .LASF28
+     /tmp/ccLo4Roh.s:2869   .debug_str:00000000000001f3 .LASF30
+     /tmp/ccLo4Roh.s:589    .text:00000000000002a8 .LFB10
+     /tmp/ccLo4Roh.s:763    .text:00000000000003fc .LFE10
+     /tmp/ccLo4Roh.s:2925   .debug_str:00000000000003a5 .LASF27
+     /tmp/ccLo4Roh.s:2637   .debug_loc:00000000000000bb .LLST10
+     /tmp/ccLo4Roh.s:608    .text:00000000000002d0 .LVL56
+     /tmp/ccLo4Roh.s:612    .text:00000000000002d8 .LVL57
+GAS LISTING /tmp/ccLo4Roh.s 			page 29
+
+
+     /tmp/ccLo4Roh.s:620    .text:00000000000002e8 .LVL59
+     /tmp/ccLo4Roh.s:658    .text:0000000000000328 .LVL60
+     /tmp/ccLo4Roh.s:681    .text:0000000000000348 .LVL61
+     /tmp/ccLo4Roh.s:686    .text:0000000000000358 .LVL62
+     /tmp/ccLo4Roh.s:694    .text:0000000000000364 .LVL63
+     /tmp/ccLo4Roh.s:699    .text:0000000000000374 .LVL64
+     /tmp/ccLo4Roh.s:707    .text:0000000000000380 .LVL65
+     /tmp/ccLo4Roh.s:712    .text:0000000000000390 .LVL66
+     /tmp/ccLo4Roh.s:720    .text:000000000000039c .LVL67
+     /tmp/ccLo4Roh.s:725    .text:00000000000003ac .LVL68
+     /tmp/ccLo4Roh.s:733    .text:00000000000003b8 .LVL69
+     /tmp/ccLo4Roh.s:738    .text:00000000000003c8 .LVL70
+     /tmp/ccLo4Roh.s:743    .text:00000000000003d8 .LVL71
+     /tmp/ccLo4Roh.s:751    .text:00000000000003e4 .LVL72
+     /tmp/ccLo4Roh.s:760    .text:00000000000003f8 .LVL73
+     /tmp/ccLo4Roh.s:2941   .debug_str:0000000000000429 .LASF29
+     /tmp/ccLo4Roh.s:2885   .debug_str:0000000000000268 .LASF31
+     /tmp/ccLo4Roh.s:508    .text:000000000000022c .LFB9
+     /tmp/ccLo4Roh.s:554    .text:00000000000002a8 .LFE9
+     /tmp/ccLo4Roh.s:525    .text:0000000000000258 .LVL52
+     /tmp/ccLo4Roh.s:532    .text:0000000000000274 .LVL53
+     /tmp/ccLo4Roh.s:539    .text:0000000000000290 .LVL54
+     /tmp/ccLo4Roh.s:543    .text:0000000000000298 .LVL55
+     /tmp/ccLo4Roh.s:2967   .debug_str:00000000000005a9 .LASF32
+     /tmp/ccLo4Roh.s:2793   .debug_str:0000000000000009 .LASF33
+     /tmp/ccLo4Roh.s:285    .text:00000000000000d0 .LFB8
+     /tmp/ccLo4Roh.s:341    .text:0000000000000158 .LFE8
+     /tmp/ccLo4Roh.s:301    .text:00000000000000ec .LVL24
+     /tmp/ccLo4Roh.s:303    .text:00000000000000f4 .LVL25
+     /tmp/ccLo4Roh.s:307    .text:00000000000000fc .LVL26
+     /tmp/ccLo4Roh.s:309    .text:0000000000000104 .LVL27
+     /tmp/ccLo4Roh.s:313    .text:000000000000010c .LVL28
+     /tmp/ccLo4Roh.s:315    .text:0000000000000114 .LVL29
+     /tmp/ccLo4Roh.s:322    .text:0000000000000130 .LVL30
+     /tmp/ccLo4Roh.s:328    .text:0000000000000144 .LVL31
+     /tmp/ccLo4Roh.s:2851   .debug_str:0000000000000199 .LASF34
+     /tmp/ccLo4Roh.s:2815   .debug_str:0000000000000091 .LASF35
+     /tmp/ccLo4Roh.s:227    .text:0000000000000068 .LFB7
+     /tmp/ccLo4Roh.s:271    .text:00000000000000d0 .LFE7
+     /tmp/ccLo4Roh.s:246    .text:0000000000000098 .LVL20
+     /tmp/ccLo4Roh.s:252    .text:00000000000000ac .LVL21
+     /tmp/ccLo4Roh.s:256    .text:00000000000000b4 .LVL22
+     /tmp/ccLo4Roh.s:258    .text:00000000000000bc .LVL23
+     /tmp/ccLo4Roh.s:2849   .debug_str:0000000000000193 .LASF36
+     /tmp/ccLo4Roh.s:2835   .debug_str:0000000000000137 .LASF37
+     /tmp/ccLo4Roh.s:169    .text:0000000000000000 .LFB6
+     /tmp/ccLo4Roh.s:213    .text:0000000000000068 .LFE6
+     /tmp/ccLo4Roh.s:188    .text:0000000000000030 .LVL16
+     /tmp/ccLo4Roh.s:194    .text:0000000000000044 .LVL17
+     /tmp/ccLo4Roh.s:198    .text:000000000000004c .LVL18
+     /tmp/ccLo4Roh.s:200    .text:0000000000000054 .LVL19
+     /tmp/ccLo4Roh.s:2833   .debug_str:0000000000000130 .LASF38
+     /tmp/ccLo4Roh.s:2933   .debug_str:00000000000003ea .LASF39
+     /tmp/ccLo4Roh.s:482    .text:000000000000022c .LFE5
+     /tmp/ccLo4Roh.s:2847   .debug_str:000000000000018b .LASF40
+     /tmp/ccLo4Roh.s:2646   .debug_loc:00000000000000e0 .LLST5
+     /tmp/ccLo4Roh.s:375    .text:000000000000017c .LBB15
+GAS LISTING /tmp/ccLo4Roh.s 			page 30
+
+
+     /tmp/ccLo4Roh.s:2662   .debug_loc:000000000000012a .LLST6
+     /tmp/ccLo4Roh.s:2677   .debug_loc:0000000000000173 .LLST7
+     /tmp/ccLo4Roh.s:414    .text:00000000000001c8 .LVL38
+     /tmp/ccLo4Roh.s:403    .text:00000000000001b4 .LVL36
+     /tmp/ccLo4Roh.s:475    .text:0000000000000220 .LVL50
+     /tmp/ccLo4Roh.s:422    .text:00000000000001cc .LBB19
+     /tmp/ccLo4Roh.s:443    .text:00000000000001ec .LBE19
+     /tmp/ccLo4Roh.s:2901   .debug_str:00000000000002d9 .LASF41
+     /tmp/ccLo4Roh.s:2692   .debug_loc:00000000000001bc .LLST8
+     /tmp/ccLo4Roh.s:2961   .debug_str:0000000000000577 .LASF42
+     /tmp/ccLo4Roh.s:2931   .debug_str:00000000000003de .LASF85
+     /tmp/ccLo4Roh.s:2705   .debug_loc:00000000000001f4 .LLST9
+     /tmp/ccLo4Roh.s:2875   .debug_str:000000000000022c .LASF43
+     /tmp/ccLo4Roh.s:436    .text:00000000000001e4 .LVL42
+     /tmp/ccLo4Roh.s:447    .text:00000000000001f4 .LVL45
+     /tmp/ccLo4Roh.s:478    .text:000000000000022c .LVL51
+     /tmp/ccLo4Roh.s:11     .text._ZN7Thread13runEv:0000000000000000 .LFB4
+     /tmp/ccLo4Roh.s:71     .text._ZN7Thread13runEv:000000000000005c .LFE4
+     /tmp/ccLo4Roh.s:2712   .debug_loc:0000000000000217 .LLST0
+     /tmp/ccLo4Roh.s:31     .text._ZN7Thread13runEv:000000000000001c .LBB10
+     /tmp/ccLo4Roh.s:54     .text._ZN7Thread13runEv:0000000000000044 .LBE10
+     /tmp/ccLo4Roh.s:2730   .debug_loc:0000000000000263 .LLST1
+     /tmp/ccLo4Roh.s:43     .text._ZN7Thread13runEv:0000000000000034 .LVL3
+     /tmp/ccLo4Roh.s:47     .text._ZN7Thread13runEv:000000000000003c .LVL4
+     /tmp/ccLo4Roh.s:2807   .debug_str:0000000000000058 .LASF86
+     /tmp/ccLo4Roh.s:2883   .debug_str:0000000000000261 .LASF45
+     /tmp/ccLo4Roh.s:2937   .debug_str:0000000000000407 .LASF47
+     /tmp/ccLo4Roh.s:2965   .debug_str:0000000000000596 .LASF48
+     /tmp/ccLo4Roh.s:2867   .debug_str:00000000000001e7 .LASF49
+     /tmp/ccLo4Roh.s:2803   .debug_str:000000000000003f .LASF50
+     /tmp/ccLo4Roh.s:2797   .debug_str:0000000000000024 .LASF51
+     /tmp/ccLo4Roh.s:2831   .debug_str:0000000000000118 .LASF52
+     /tmp/ccLo4Roh.s:2957   .debug_str:0000000000000557 .LASF53
+     /tmp/ccLo4Roh.s:2819   .debug_str:00000000000000a8 .LASF54
+     /tmp/ccLo4Roh.s:2881   .debug_str:000000000000024c .LASF55
+     /tmp/ccLo4Roh.s:2871   .debug_str:0000000000000200 .LASF56
+     /tmp/ccLo4Roh.s:2899   .debug_str:00000000000002c2 .LASF57
+     /tmp/ccLo4Roh.s:2839   .debug_str:000000000000014b .LASF58
+     /tmp/ccLo4Roh.s:2927   .debug_str:00000000000003aa .LASF59
+     /tmp/ccLo4Roh.s:2823   .debug_str:00000000000000ce .LASF60
+     /tmp/ccLo4Roh.s:2799   .debug_str:0000000000000029 .LASF61
+     /tmp/ccLo4Roh.s:2905   .debug_str:00000000000002f3 .LASF62
+     /tmp/ccLo4Roh.s:2829   .debug_str:000000000000010a .LASF63
+     /tmp/ccLo4Roh.s:2889   .debug_str:0000000000000282 .LASF64
+     /tmp/ccLo4Roh.s:2841   .debug_str:000000000000016e .LASF65
+     /tmp/ccLo4Roh.s:2821   .debug_str:00000000000000c2 .LASF66
+     /tmp/ccLo4Roh.s:2943   .debug_str:0000000000000431 .LASF67
+     /tmp/ccLo4Roh.s:2805   .debug_str:0000000000000048 .LASF68
+     /tmp/ccLo4Roh.s:2801   .debug_str:000000000000003a .LASF69
+     /tmp/ccLo4Roh.s:2879   .debug_str:0000000000000246 .LASF70
+     /tmp/ccLo4Roh.s:2959   .debug_str:000000000000056a .LASF71
+     /tmp/ccLo4Roh.s:2863   .debug_str:00000000000001d1 .LASF87
+     /tmp/ccLo4Roh.s:2955   .debug_str:000000000000053f .LASF88
+     /tmp/ccLo4Roh.s:2845   .debug_str:0000000000000182 .LASF72
+     /tmp/ccLo4Roh.s:2891   .debug_str:0000000000000296 .LASF73
+     /tmp/ccLo4Roh.s:2919   .debug_str:0000000000000383 .LASF74
+     /tmp/ccLo4Roh.s:2877   .debug_str:0000000000000236 .LASF75
+GAS LISTING /tmp/ccLo4Roh.s 			page 31
+
+
+     /tmp/ccLo4Roh.s:118    .text._ZN7Thread1D0Ev:0000000000000000 .LVL11
+     /tmp/ccLo4Roh.s:150    .text._ZN7Thread1D0Ev:0000000000000044 .LVL15
+     /tmp/ccLo4Roh.s:130    .text._ZN7Thread1D0Ev:0000000000000018 .LVL12
+     /tmp/ccLo4Roh.s:81     .text._ZN7Thread1D2Ev:0000000000000000 .LVL9
+     /tmp/ccLo4Roh.s:616    .text:00000000000002e0 .LVL58
+     /tmp/ccLo4Roh.s:368    .text:0000000000000174 .LVL32
+     /tmp/ccLo4Roh.s:373    .text:000000000000017c .LVL33
+     /tmp/ccLo4Roh.s:460    .text:0000000000000204 .LVL47
+     /tmp/ccLo4Roh.s:466    .text:0000000000000210 .LVL48
+     /tmp/ccLo4Roh.s:470    .text:0000000000000214 .LVL49
+     /tmp/ccLo4Roh.s:383    .text:000000000000018c .LVL34
+     /tmp/ccLo4Roh.s:408    .text:00000000000001c0 .LVL37
+     /tmp/ccLo4Roh.s:417    .text:00000000000001cc .LVL39
+     /tmp/ccLo4Roh.s:430    .text:00000000000001d8 .LVL41
+     /tmp/ccLo4Roh.s:439    .text:00000000000001e8 .LVL43
+     /tmp/ccLo4Roh.s:441    .text:00000000000001ec .LVL44
+     /tmp/ccLo4Roh.s:426    .text:00000000000001d0 .LVL40
+     /tmp/ccLo4Roh.s:457    .text:0000000000000200 .LVL46
+     /tmp/ccLo4Roh.s:15     .text._ZN7Thread13runEv:0000000000000000 .LVL0
+     /tmp/ccLo4Roh.s:34     .text._ZN7Thread13runEv:0000000000000020 .LVL2
+     /tmp/ccLo4Roh.s:66     .text._ZN7Thread13runEv:0000000000000054 .LVL8
+     /tmp/ccLo4Roh.s:30     .text._ZN7Thread13runEv:000000000000001c .LVL1
+     /tmp/ccLo4Roh.s:50     .text._ZN7Thread13runEv:0000000000000040 .LVL5
+     /tmp/ccLo4Roh.s:52     .text._ZN7Thread13runEv:0000000000000044 .LVL6
+     /tmp/ccLo4Roh.s:63     .text._ZN7Thread13runEv:0000000000000050 .LVL7
+     /tmp/ccLo4Roh.s:806    .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccLo4Roh.s:5      .text:0000000000000000 .Ltext0
+     /tmp/ccLo4Roh.s:795    .text:00000000000003fc .Letext0
+     /tmp/ccLo4Roh.s:369    .text:0000000000000174 .LBB14
+     /tmp/ccLo4Roh.s:421    .text:00000000000001cc .LBE14
+     /tmp/ccLo4Roh.s:471    .text:0000000000000214 .LBB20
+     /tmp/ccLo4Roh.s:480    .text:000000000000022c .LBE20
+     /tmp/ccLo4Roh.s:385    .text:000000000000018c .LBE15
+     /tmp/ccLo4Roh.s:410    .text:00000000000001c0 .LBB18
+     /tmp/ccLo4Roh.s:420    .text:00000000000001cc .LBE18
+     /tmp/ccLo4Roh.s:485    .gcc_except_table:0000000000000000 .LLSDA5
+                           .group:0000000000000000 _ZN7Thread1D5Ev
 
 UNDEFINED SYMBOLS
+_Z4putcc
+_Z15thread_dispatchv
+_ZN6ThreadD2Ev
+_ZdlPv
+_Z4sendP3TCBPKc
+_Z7receivev
 _Z11printStringPKc
+_Znwm
+_ZN6ThreadC2Ev
+_ZN6Thread5startEv
+_Z14thread_waitallv
+_Unwind_Resume
+__gxx_personality_v0
+_Z13thread_createPP3TCBPFvPvES2_
 _Z4getcv
 _Z18Threads_C_API_testv
 _Z20Threads_CPP_API_testv
 _Z22producerConsumer_C_APIv
-GAS LISTING /tmp/cc4UOzhB.s 			page 12
+GAS LISTING /tmp/ccLo4Roh.s 			page 32
 
 
 _Z29producerConsumer_CPP_Sync_APIv

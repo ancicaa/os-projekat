@@ -20,7 +20,9 @@ enum code {
     SEM_CLOSE = 0x22,
     SEM_WAIT = 0x23,
     SEM_SIGNAL = 0x24,
-    SEM_TRYWAIT = 0x26
+    SEM_TRYWAIT = 0x26,
+    SEND = 0x50,
+    RECEIVE = 0x51
 };
 
 //memorija
@@ -44,6 +46,10 @@ int thread_join(thread_t);
 void thread_waitall();
 
 void setMaxThreads(int number);
+
+void send(thread_t, const char *);
+
+const char *receive();
 
 //semafori
 class _sem;

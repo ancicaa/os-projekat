@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccsd7Un6.s 			page 1
+GAS LISTING /tmp/ccITeW2c.s 			page 1
 
 
    1              		.file	"_new.cpp"
@@ -8,34 +8,34 @@ GAS LISTING /tmp/ccsd7Un6.s 			page 1
    5              	.Ltext0:
    6              	.Letext0:
    7              		.file 1 "src/../h/../lib/hw.h"
-GAS LISTING /tmp/ccsd7Un6.s 			page 2
+GAS LISTING /tmp/ccITeW2c.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 _new.cpp
-     /tmp/ccsd7Un6.s:138    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-     /tmp/ccsd7Un6.s:305    .debug_str:00000000000000b8 .LASF18
-     /tmp/ccsd7Un6.s:291    .debug_str:000000000000004a .LASF19
-     /tmp/ccsd7Un6.s:315    .debug_str:00000000000001bf .LASF20
-     /tmp/ccsd7Un6.s:277    .debug_line:0000000000000000 .Ldebug_line0
-     /tmp/ccsd7Un6.s:307    .debug_str:000000000000017c .LASF0
-     /tmp/ccsd7Un6.s:301    .debug_str:0000000000000099 .LASF1
-     /tmp/ccsd7Un6.s:297    .debug_str:0000000000000079 .LASF2
-     /tmp/ccsd7Un6.s:285    .debug_str:0000000000000028 .LASF4
-     /tmp/ccsd7Un6.s:299    .debug_str:0000000000000087 .LASF3
-     /tmp/ccsd7Un6.s:281    .debug_str:0000000000000013 .LASF5
-     /tmp/ccsd7Un6.s:279    .debug_str:0000000000000000 .LASF6
-     /tmp/ccsd7Un6.s:293    .debug_str:0000000000000057 .LASF7
-     /tmp/ccsd7Un6.s:309    .debug_str:0000000000000189 .LASF8
-     /tmp/ccsd7Un6.s:283    .debug_str:000000000000001a .LASF9
-     /tmp/ccsd7Un6.s:319    .debug_str:00000000000001f9 .LASF10
-     /tmp/ccsd7Un6.s:295    .debug_str:000000000000006a .LASF11
-     /tmp/ccsd7Un6.s:317    .debug_str:00000000000001e9 .LASF12
-     /tmp/ccsd7Un6.s:313    .debug_str:00000000000001af .LASF13
-     /tmp/ccsd7Un6.s:303    .debug_str:00000000000000ac .LASF14
-     /tmp/ccsd7Un6.s:289    .debug_str:0000000000000034 .LASF15
-     /tmp/ccsd7Un6.s:311    .debug_str:0000000000000199 .LASF16
-     /tmp/ccsd7Un6.s:287    .debug_str:000000000000002f .LASF17
-     /tmp/ccsd7Un6.s:9      .debug_info:0000000000000000 .Ldebug_info0
+     /tmp/ccITeW2c.s:138    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+     /tmp/ccITeW2c.s:305    .debug_str:00000000000000b8 .LASF18
+     /tmp/ccITeW2c.s:291    .debug_str:000000000000004a .LASF19
+     /tmp/ccITeW2c.s:315    .debug_str:00000000000001bf .LASF20
+     /tmp/ccITeW2c.s:277    .debug_line:0000000000000000 .Ldebug_line0
+     /tmp/ccITeW2c.s:307    .debug_str:000000000000017c .LASF0
+     /tmp/ccITeW2c.s:301    .debug_str:0000000000000099 .LASF1
+     /tmp/ccITeW2c.s:297    .debug_str:0000000000000079 .LASF2
+     /tmp/ccITeW2c.s:285    .debug_str:0000000000000028 .LASF4
+     /tmp/ccITeW2c.s:299    .debug_str:0000000000000087 .LASF3
+     /tmp/ccITeW2c.s:281    .debug_str:0000000000000013 .LASF5
+     /tmp/ccITeW2c.s:279    .debug_str:0000000000000000 .LASF6
+     /tmp/ccITeW2c.s:293    .debug_str:0000000000000057 .LASF7
+     /tmp/ccITeW2c.s:309    .debug_str:0000000000000189 .LASF8
+     /tmp/ccITeW2c.s:283    .debug_str:000000000000001a .LASF9
+     /tmp/ccITeW2c.s:319    .debug_str:00000000000001f9 .LASF10
+     /tmp/ccITeW2c.s:295    .debug_str:000000000000006a .LASF11
+     /tmp/ccITeW2c.s:317    .debug_str:00000000000001e9 .LASF12
+     /tmp/ccITeW2c.s:313    .debug_str:00000000000001af .LASF13
+     /tmp/ccITeW2c.s:303    .debug_str:00000000000000ac .LASF14
+     /tmp/ccITeW2c.s:289    .debug_str:0000000000000034 .LASF15
+     /tmp/ccITeW2c.s:311    .debug_str:0000000000000199 .LASF16
+     /tmp/ccITeW2c.s:287    .debug_str:000000000000002f .LASF17
+     /tmp/ccITeW2c.s:9      .debug_info:0000000000000000 .Ldebug_info0
 
 NO UNDEFINED SYMBOLS

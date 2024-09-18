@@ -46,11 +46,12 @@ int _sem::sem_wait(sem_t id) {
     if (id == nullptr || id->closed) {
         return -1;
     }
-
-    if (id->value-- <= 0) {//ako je semafor nula ili manji, blokiraj nit
+    if (id->value == 0) {//ako je semafor nula ili manji, blokiraj nit
         TCB::running->setBlocked(true);  //  nit blokirana
         id->blokiraneNiti.addLast(TCB::running);  // Dodaj nit na listu blokiranih
         TCB::yield();
+    } else {
+        id->value--;
     }
     if (id->closed)
         return -1;
@@ -77,8 +78,9 @@ int _sem::sem_signal(sem_t id) {
             thread->setBlocked(false);  // nije blokirana
             Scheduler::put(thread);  // ubaci
         }
+    } else {
+        id->value++;
     }
-    id->value++;
     return 0;
 }
 

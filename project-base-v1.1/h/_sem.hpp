@@ -19,7 +19,7 @@ typedef TCB *thread_t;
 
 class _sem {
 public:
-    _sem(unsigned init = 1) : value(init), closed(false) {}
+    _sem(long init = 1) : value(init), closed(false) {}
 
     static int sem_open(sem_t *handle, long init);
 
